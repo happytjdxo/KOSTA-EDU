@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공백을 만들어주는 &nbsp; 와 다른 특수 문자들..&lt; &gt;</title>
+</head>
+<body>
+	웹 브라우저에서는 공백을 주기 위해서 space                               bar를 아무리 줘도 
+	공백으로 인식 안한다.Enter 키로 줄을 바꿔도 인식안한다.<br>
+	여러개의 공백을 연속적으로 인식시키기 위해서는 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	라는 특수키를 이용해야 한다.<br>
+	<p>
+	&lt;특수문자&gt;
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- 
+	bind()
+	mouseenter(), mouseleave()
+	hover()
+	find()
+	click()
+	unbind()
+	setTimeout()/setInterval()
+	hide() /show()
+	fadeOut() / fadeIn()
+	val()/text()
+	onload..속성	
+	trigger()
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>trigger() :: 특별한 액션을 취하지 않아도 자동적으로 이벤트를 발생시키는 함수
+</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. Star를 클릭하면.. 그 옆에 별이 찍히도록..작성
+		$('h1').click(function(){
+			//이벤트가 발생한 그 지점을 가리키는 키워드.. this 사용, html() 사용
+			$(this).html(function(index,html){
+				return html + '★';
+			}); //html()
+		}); //click()
+		
+		//2. 클릭하지 않아도 1초마다 자동적으로 별이 찍히도록 로직을 작성..
+		// trigger(), setInterval()
+		setInterval(function(){
+			$('h1').trigger('click');
+		}, 1000);
+		
+		//3. 버튼을 클릭하면 이벤트를 해제 시킨다.
+		$('button').click(function(){
+			$('h1').unbind();
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>Star ::</h1>
+	<!-- <button>Stop Trigger Event</button> -->
+	<input type="button" name = "stop" onclick = "stopTrigger()">
+</body>
+</html>

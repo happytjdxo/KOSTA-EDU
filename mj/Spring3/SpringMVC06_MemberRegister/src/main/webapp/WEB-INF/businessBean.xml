@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- dataSource : 하드코딩 안해 : 참조 : 파일 불러와야되지 -->
+	<context:property-placeholder location="classpath:config/jdbc.properties"/>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${JDBC.Driver}"/>
+		<property name="url" value="${JDBC.ConnectionUrl}"/>
+		<property name="username" value="${JDBC.Username}"/>
+		<property name="password" value="${JDBC.Password}"/>
+	</bean>
+	
+	<!-- MyBatis : sqlSessionFactory, sqlSession -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:config/sqlMapConfig.xml"/>
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- User Definition Beans : Dao, Service -->
+	<bean id="memberDao" class="model.MemberDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	<bean id="memberService" class="model.MemberServiceImpl">
+		<property name="memberDao" ref="memberDao"/>
+	</bean>
+</beans>

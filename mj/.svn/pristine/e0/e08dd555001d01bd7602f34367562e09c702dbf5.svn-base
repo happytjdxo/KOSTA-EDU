@@ -1,0 +1,26 @@
+<!-- 
+html에서 이미지는 하나의 텍스트로 취급된다.
+따라서 이미지 다음에 글자를 기술하면 이미지와 글씨가 나란히 출력된다..
+이때 이미지 중앙부분에 글씨를 올라오게 하기 위해서는 vertical-align 속성을 적용
+vertical-align 속성에서 text-bottom 이 디폴트이다.
+
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <style type="text/css">
+	img{
+	vertical-align: text-bottom;
+	}
+</style> -->
+</head>
+<body>
+<!-- css 적용 :: 인라인 방식 사용 :: 1.윗쪽에 글자가 정렬 3. 가운데 글자가 정렬 -->
+<img alt="멍멍이1" src="./img/dog1.jpg" style="vertical-align: text-top;"><b>곰곰이 아님 .. 나 멍멍이 임!!</b><p>
+<img alt="멍멍이2" src="./img/dog2.jpg"><b>건드리지마삼.. 왈왈</b><p>
+<img alt="멍멍이3" src="./img/dog3.jpg" style="vertical-align: middle;"><b>배고마요 간식 주세욤..</b><p>
+</body>
+</html>

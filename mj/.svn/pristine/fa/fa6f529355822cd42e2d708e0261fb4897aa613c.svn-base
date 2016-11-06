@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript를 이용해서 form값을 체크하는 방법</title>
+
+	<script type="text/javascript">
+		/* 
+			1. 아이디를 입력하지 않고 버튼을 누르면 "아이디 입력은 필수다."라는 메시지 띄운다.
+			   그리고 포커스는 아이디로.
+			2. 패스워드를 입력하지 않으면 "패스워드 입력은 필수다." 라는 메시지를 띄운다.
+			   그리고 포커스는 패스워드로.
+			3. 아이디와 패스워드 모두를 입력하고, Login버튼을 누르면,
+			   팝업창으로 두 개의 정보를 띄워준다.
+		*/
+		function showLogin(){
+			var idf = window.document.loginForm.id;
+			var psf = window.document.loginForm.password;
+			
+			if(idf.value == ""){
+				alert("아이디 입력은 필수다.");
+				idf.focus();
+			} else if(psf.value == ""){
+				alert("비번 입력은 필수다.");
+				psf.focus();
+			} else{
+				alert(idf.value + " " + psf.value);
+				idf.value = "";
+				psf.value = "";
+				idf.focus();
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1 align="center">Login Form....</h1><p>
+	
+	<form name="loginForm">
+		<table border="1" align="center">
+			<tr>
+				<td>ID : </td>
+				<td><input type="text" name="id" size="32"></td>
+			</tr>
+			<tr>
+				<td>PS : </td>
+				<td><input type="password" name="password" size="32"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" name="로그인" onclick="showLogin()">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

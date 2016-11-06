@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript를 이용해서 form값을 체크하는 방법</title>
+<!-- 
+step06.html에서는 자바스크립트를 이용해서 폼값을 검증했다.
+step06_1.html에서는 자바스크립트를 이용하지 않고, html5에서 새롭게 추가된
+파워풀한 속성을 이용해서 폼값의 유효성을 체크 하겠다.
+required 라는 속성을 소개 합니다.
+ -->
+</head>
+<body>
+<h1 align="center">Login Form....</h1><p>
+	
+	<form name="loginForm">
+		<table border="1" align="center">
+			<tr>
+				<td>ID : </td>
+				<td><input type="text" name="id" size="32" required="required"></td>
+			</tr>
+			<tr>
+				<td>PS : </td>
+				<td><input type="password" name="password" size="32" required="required"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" name="로그인"><!-- javaScript을 이요하지 않기 때문에 button안댐 -->
+				</td>
+			</tr>
+		</table>
+</body>
+</html>

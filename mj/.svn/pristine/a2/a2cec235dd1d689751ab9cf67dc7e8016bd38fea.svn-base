@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+		<resultMap type="member" id="memberSelectMap"> 
+		<result property="ssn" column="ssn" jdbcType="VARCHAR"/>
+		<result property="id" column="id" jdbcType="VARCHAR"/> 
+		<result property="password" column="password" jdbcType="VARCHAR"/>
+		<result property="name" column="name" jdbcType="VARCHAR"/> 
+		<result property="address" column="address" jdbcType="VARCHAR"/>
+		<result property="nickname" column="nickname" jdbcType="VARCHAR"/> 
+		<result property="gender" column="gender" jdbcType="VARCHAR"/> 
+		<result property="grade" column="grade" jdbcType="VARCHAR"/> 
+		</resultMap> 
+		
+		<sql id = "selectMember"> 
+		SELECT 
+		ssn, id, password, name, address, nickname,	gender, grade 
+		FROM member
+		</sql>
+
+	<!-- <select id="findAll" resultMap="memberSelectMap">
+		<include refid="selectMember" />
+		</select> -->
+
+	<!-- <insert id="registerMember" parameterType="member" >
+		INSERT INTO member 
+		(ssn, id, password, name, address, nickname, gender, grade) 
+		VALUES 
+		(#{ssn},#{id},#{password},#{name},#{address},#{nickname},#{gender},#{grade}) 
+		</insert> -->
+
+	<!-- <select id="findByPrimaryKey" parameterType="int" resultMap="memberSelectMap">
+		<include refid="selectMember" />
+		WHERE item_id = #{value}
+	</select> -->
+	
+	<select id="idCheck" resultMap="memberSelectMap">
+		<include refid="selectMember" />
+		WHERE id = #{value}
+	</select>
+	
+	<select id="passwordCheck" resultMap="memberSelectMap">
+		<include refid="selectMember" />
+		WHERE password = #{value}
+	</select>
+
+	<select id="nickNameCheck" resultMap="memberSelectMap">
+		<include refid="selectMember" />
+		WHERE nickname = #{value}
+	</select>
+	
+	<update id="updateMember" parameterType="member">
+		UPDATE member SET password, address, nickname
+		WHERE ssn = #{ssn}
+	</update>
+	
+	<select id = "login" resultMap = "memberSelectMap" parameterType="member">
+		<include refid="selectMember" />
+		WHERE id = #{id} and password=#{password}
+	</select>
+	
+	<select id = "findId" resultMap = "memberSelectMap">
+		<include refid="selectMember" />
+		WHERE id = #{id}
+	</select>
+	
+	<select id = "findPassword" resultMap = "memberSelectMap" parameterType="member">
+		<include refid="selectMember" />
+		WHERE id = #{id} and ssn=#{ssn}
+	</select>
+	
+	<delete id = "deleteMember" parameterType="member">
+		DELETE FROM member
+		WHERE ssn = #{ssn}
+	</delete>
+	
+</mapper>

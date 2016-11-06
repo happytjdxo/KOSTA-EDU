@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>append(), prepend(), after(), before()를 이미지와 함께 사용하기</title>
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	.angel{ border: 2px; width: 200px; height: 250px; }
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('body').append('<h3>Hello Nice Day!!</h3>');
+		//1. h3 태그를 선택자로 지정.. 그 태그 앞에 Today is Friday를 붙임(이때 색깔은 red)
+		$('h3:eq(0)').prepend('<font color = red> Today is Friday</font>');
+		//$('h3:eq(0)').before('<font color = red> Today is Friday</font>');
+		
+		//2. 첫번째 font를 선택자로 지정.. after를 이용해서 Goof Luck!!, color는 blue
+		$('font:eq(0)').after('<font color = blue> Today is Lucky day</font>');	//br 효과가 없다.
+		
+		//3. 이미지를 부착해 보겠다.
+		var img1 = "<img src='./image/1.JPG'>";
+		var img2 = "<img src='./image/2.JPG'>";
+		var img3 = "<img src='./image/3.JPG'>";
+		
+		var h1 = "<h1>잘나가는 녀자들 ^^</h1>";
+		
+		//4. body 태그를 선택자로 지정// img1, img2, img3, h1...append() 사용
+		//append()안에는 태그를 포함한 내용이 들어온다!! appendTo()와 비교
+		$('body').append(h1, img1, img2, img3);
+		
+		//5. addClass()를 사용..
+		$('img').addClass('angel');
+		
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

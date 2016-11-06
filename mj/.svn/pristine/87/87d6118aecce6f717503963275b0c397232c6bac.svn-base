@@ -1,0 +1,68 @@
+<!-- 
+	체크박스에서 활성화된 요소를 선택
+	::
+	$('input[name=menu]:checked')
+	$('input[type=checkbox]:checked')
+	$('input[type=checkbox]:checked:enabled')
+	
+	요소 : selected --- option중 선택된 값을 의미
+	요소 : checked ---- checkbox에서 어떤 요소가 cheking 된것을 의미
+	요소 : hidden ----- 감추어진 요소만 선택
+	요소 : visible ---- 보이는 요소만 선택
+	요소 : enabled ---- 활성화된 요소만 선택
+	요소 : disabled --- 비활성화된 요소만 선택
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 하나의 메뉴도 선택하지 않고 주문을 했다면
+		//"하나 이상의 메뉴는 주문을 해주셔야 합니다.. 라는 메세지를 띄운다."
+		$('#orderBtn').click(function(){
+			var menu = $('input[name=menu]:checked');
+			//alert(menu.length);
+			if(menu.length==0){
+				alert("하나 이상의 메뉴를 골라주세요");
+				return;
+			}else{
+					/* var str = "";
+				for(var i=0; i<menu.length; i++){
+					//alert($(menu[i]).val()+"");
+					str += $(menu[i]).val() + " ";
+				}
+				alert("선택한 메뉴 :: " + str); */
+			 	
+				//2. each() 함수 사용
+				var str = "";
+				menu.each(function(index){
+					str +=index+1+"."+$(menu[index]).val()+ " ";
+				});
+				//salert("선택한 메뉴2 :: " + str);
+				
+				//3. menuView영역에 선택한 메뉴가 뿌려지도록..
+				$('#menuView').html(str).slideToggle('slow');
+			}// else
+		});// click
+	});// function
+</script>
+</head>
+<body>
+<h2>하나 이상의 메뉴를 선택하세요</h2><p>
+<form action ="#" id = "menuForm">
+	<input type = "checkbox" name = "menu" value = "감자탕">감자탕<br>
+	<input type = "checkbox" name = "menu" value = "골뱅이무침">골뱅이무침<br>
+	<input type = "checkbox" name = "menu" value = "삼겹살">삼겹살<br>
+	<input type = "checkbox" name = "menu" value = "곱창">곱창<br>
+	<input type = "checkbox" name = "menu" value = "치킨">치킨<br>
+	
+	<input type = "button" value = "주문하기" id = "orderBtn"><p>
+	<div id = "menuView"></div>
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javaScript파일을 html파일로부터 외부로 분리..</title>
+<script type="text/javascript" src="step08.js"></script>
+</head>
+<body>
+<form name="jsForm">
+	<input type="button" value="js연결" onclick="jsTest()">
+</form>
+</body>
+</html>

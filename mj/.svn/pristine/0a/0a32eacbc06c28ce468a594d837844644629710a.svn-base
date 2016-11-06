@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. allCheck를 클릭하면.. 나머지 모든 부분이 동시에 체크되어진도록
+	/*  	$(':checkbox[name=allCheck]').click(function(){
+			if($(this).prop('checked', true)){
+				$('input[name=menu]').prop('checked', true);
+			}
+		});  */
+		
+	 	/* $(':checkbox[name=allCheck]').click(function(){
+	 		var allCheck = $(this).prop('checked');
+	 		//alert(allCheck);
+	 		$('input[name=menu]').prop('checked', allCheck);
+	 	}); */
+	 	
+	 	//click --> change()
+	 	$(':checkbox[name=allCheck]').change(function(){
+	 		var allCheck = $(this).prop('checked');
+	 		//alert(allCheck);
+	 		$('input[name=menu]').prop('checked', allCheck);
+	 	});
+	});
+</script>
+</head>
+<body>
+<h2>메뉴 선택하기</h2><p>
+<table border = "2" bgcolor = "yellow" width = "400">
+	<tr>
+		<td><input type = "checkbox" name = "allCheck"></td>
+		<td>전체선택</td>
+	</tr>
+	<tr>
+		<td><input type = "checkbox" name = "menu"></td>
+		<td>짜장면</td>
+	</tr>
+	<tr>
+		<td><input type = "checkbox" name = "menu"></td>
+		<td>짬뽕</td>
+	</tr>
+	<tr>
+		<td><input type = "checkbox" name = "menu"></td>
+		<td>팔보채</td>
+	</tr>
+	<tr>
+		<td><input type = "checkbox" name = "menu"></td>
+		<td>깐풍기</td>
+	</tr>
+</body>
+</html>

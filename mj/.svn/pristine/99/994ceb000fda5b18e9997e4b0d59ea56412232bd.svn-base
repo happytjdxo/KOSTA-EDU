@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. h1 태그를 선택자로 지정해서 clone().. div 영역에 붙임..
+		//$('h1').clone().appendTo('div');
+		$('div').append($('h1').clone());
+		
+		//2. 이미지를 복제해서 첫번째 h1 태그에 붙임.. append()
+		$('h1:first').before($('img').clone());
+		$('h1').first().after($('img').clone());
+	});//
+	
+	function pagescroll() {
+		var x;
+		for(var y=0; y<=1000; y++){
+			window.scroll(x,y);
+		}
+	}
+</script>
+</head>
+<body onload="pagescroll()">
+<h1>Have Nice Day~~</h1>
+<hr>
+<div></div>
+<hr>
+<img alt="" src= "./image/1.JPG" width="200px">
+</body>
+</html>
+
+<!-- 
+	페이지가 최초로 로딩되면서 자동스크롤링이 가능할 수 있도록 함수를 사용, 로직을 작성
+	
+ -->

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Click()함수와 이벤트 해제 기능..</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 첫번째 h2 태그를 클릭하면
+		/* $('h2:first').click(function(){
+			$(this).html('<font color= red>CLICK!!</font>');
+			
+			alert("Click Function Call!!");
+			
+			//이벤트를 해제하는 click 이벤트를.. 기능을 연결
+			$(this).unbind();
+		}); */
+		//2. bind()를 사용해서 
+	
+	$('h2:eq(0)').bind('click', function() {
+			$(this).html('<font color= red>CLICK!!</font>');
+
+			alert("Click Function Call!!");
+
+			//이벤트를 해제하는 click 이벤트를.. 기능을 연결
+			$(this).unbind();
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>오늘 밤에는 비가 온답니다.</h2>
+	<h2>우산들 가지고 오셨나요??</h2>
+	<h2>그러면 술 한잔 하시고 비 좀 맞으세요..</h2>
+</body>
+</html>

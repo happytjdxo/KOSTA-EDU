@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javaScript에서의 변수 선언법 :: 타입을 명시하지 않는다.</title>
+<!-- <script type="text/javascript">
+var count = 5;	//변수를 선언할 때, var를 명시해서 변수임을 알린다.
+var name = "민재";
+
+for(i=0; i<5; i++){
+	window.document.write(name + "야~~~~~~~~<br>");
+}
+//alert("가을하늘 좋다~");
+window.alert(name +"야~~ 가을 하늘이다~ 놀라가자~");
+</script> -->
+<script type="text/javascript">
+	Function test1(){
+		alert("공기 좋다~");
+	}
+	Function test2(tone,name) {
+		var data = test3(name);
+		alert(tone+""+data+"의 공감!");
+	}
+	Function test3(message) {
+		return message + "너말이 맞아!";
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value="test1" onclick="test1()">
+	<input type="button" value="test2" onclick="test2('나는','박정기')">
+</body>
+</html>

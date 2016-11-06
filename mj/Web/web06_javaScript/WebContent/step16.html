@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select form을 다루기</title>
+<script type="text/javascript">
+	function selectLine() {
+		//alert(document.subwayForm.line);
+		//alert(document.subwayForm.line.value);
+		var sa = document.subwayForm.line;
+		//alert(sa.length);
+		/*	내가 선택한 지하철 노선이 alert 창으로 뜨도록 작성.
+			select form은 radio, checkbox 폼과는 이부분에서 다르다.
+			선택된 값을 확인하기 위해 checked를 사용하지 않는다.
+		 */
+		/* for(i=0; i<sa.length; i++){
+			if(sa[i].checked)
+			alert(sa[i].value);
+		} */
+
+		if (sa.value != null)//선택했다면
+			alert(sa.value + "Line Select!");
+
+	}
+</script>
+</head>
+<body>
+<body>
+	<b>여러분이 출.퇴근시 이용하는 지하철 노선을 선택하세요.</b>
+	<form name="subwayFoem">
+
+		<select name="line" onchange="selectLine()">
+			<option value="">===Select Subway line===</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select>
+	</form>
+</body>
+</body>
+</html>

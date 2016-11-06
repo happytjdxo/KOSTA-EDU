@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.view{
+		background:rgba(35,177,77,1);
+	}
+	tr{
+		border:0px;
+		margin:0px;
+		border-collapse:collapse; 
+		border-spacing: 0px; 
+		border-style: none; 
+		padding: 0px;
+	}
+	
+	td{
+		border:0px;
+		margin:0px;
+		border-collapse:collapse; 
+		border-spacing: 0px; 
+		border-style: none; 
+		padding: 0px;
+	}
+	
+	img { vertical-align:middle;}
+	
+	#tableId{
+		border-collapse:collapse; 
+		border-spacing: 0px; 
+		border-style: none; 
+		padding: 0px
+	}
+	
+	.btnover{
+		background:rgba(153,151,141,1);
+	}
+	
+	.btnout{
+		background:rgba(35,177,77,1);
+	}
+	
+	
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#img1').hover(mouseOver,mouseOut);
+		$('#img2').hover(mouseOver2,mouseOut2);
+		$('#idFind').click(idFind);
+		
+		function mouseOver(){
+			$('#img1').attr('src',"img/idFindOver.jpg");
+			$('#img2').attr('src',"img/passwordFindOut.jpg");
+			$('.view').html("<td>ID : <input type='text' name='idFind'><br><input type='button' id='idFind' value='전송'></td>");
+			$('#idFind').click(idFind);
+			
+		}
+		
+		function mouseOut(){
+			
+		}
+		
+		function mouseOver2(){
+			$('#img2').attr('src',"img/passwordFindOver.jpg");
+			$('#img1').attr('src',"img/idFindOut.jpg");
+			$('.view').html("<td>PASSWORD : <input type='text' name='passwordFind'><br><input type='button' id='passwordFind' value='전송'></td>");
+			$('#passwordFind').click(passwordFind);
+		}
+		
+		function mouseOut2(){
+			
+		}
+		
+		
+		function idFind(){
+			alert('1');
+		}
+		
+		function passwordFind(){
+			alert('2');
+		}
+	});
+</script>
+</head>
+<body>
+	<table id="tableId">
+		<tr><td><img id="img1" alt="" src="img/idFindOver.jpg"><img id="img2" alt="" src="img/passwordFindOut.jpg"></td></tr>
+		<tr class="view">
+			<td>
+				ID : <input type='text' name='idFind'><br>
+				<input type='button' id="idFind" value='전송'>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!-- 
+table, th, tr{	// 열거형.. 전부다 선택자로 지정됨
+table th{	// table태그의 자식인 th를 선택자로 지정.
+table>tr{	// table태그의 자식태그인 tr을 선택자로 지정.. 직계자식.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>talbe, tr, td</title>
+<style type="text/css">
+	table{
+		width: 60%;
+		border-bottom: 1px solid red;
+		border-top: 2px solid red;
+		border-collapse: collapse;	/* border사이의 간역을 없앰	*/
+	}
+	/* table태그의 자식으로서의 th를 선택자로 지정	*/
+	table th{
+		background-color: red;
+		color: #fff;
+		border-bottom: 2px solid red;
+	}
+	
+	table td{
+		border-bottom: 1px dotted yellow;
+		text-align: center;
+	}
+	
+	table tr:HOVER{
+		background-color: yellow;
+	}
+</style>
+</head>
+<body>
+<h2 align="center">Table Decoration..</h2>
+<table align="center">
+	<tr>
+		<th>주민번호</th><th>이름</th><th>주소</th>
+	</tr>
+	<tr>
+		<td>111-111</td><td>나정이</td><td>신촌</td>
+	</tr>
+	<tr>
+		<td>222-222</td><td>쓰레기</td><td>세브란스</td>
+	</tr>
+	<tr>
+		<td>333-333</td><td>빙그레</td><td>목동</td>
+	</tr>
+</table>
+</body>
+</html>

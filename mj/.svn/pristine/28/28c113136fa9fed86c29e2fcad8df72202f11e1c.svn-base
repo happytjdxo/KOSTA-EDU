@@ -1,0 +1,26 @@
+MVC(Model2) 로 수업을 진행 할꺼다.
+MVC -> Front Contoller Pattern.(hidden) -> Factory Method Pattern.(☆)
+
+
+
+
+index.jsp
+---------------------------------------------------------------------------
+
+회원검색(빨강색으로)	------> find.jsp		------> FindServlet - find_OK.jsp
+									    - find_fail.jsp
+---------------------------
+(검은색으로)
+로그인 하기		------> login.jsp		------> LoginServlet - login_OK.jsp
+									     - login_fail.jsp
+회원 가입하기		------> registerMember.jsp	------> IdCheckServlet - idcheck_result.jsp
+								RegisterServlet - register_result.jsp
+
+(파랑색으로)<파랑색은 로그인을 한 후에 볼수있는 부분>
+전체 회원보기		------> AllMemberServlet
+회원 정보수정하기	------> update.jsp		------> UpdateServlet
+주소별 검색하기		------> selectAddress.jsp
+로그아웃 하기		------> LogoutServlet
+
+---------------------------------------------------------------------------
+c:if문을 써서 해야함. 조건이 걸려있응께.

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	img{ width: 65px; height: 65px; background: orange; position : relative;}
+</style>
+<script type="text/javascript">
+	$(function() {
+		//1. 참새를 오른쪽으로 이동시킴..
+		$('img').animate({left:'+250'}, 'fast');
+		$('img').animate({left:'+50'}, 'slow');
+		
+		//2. redbird의 몸집이 커지도록..
+		$('img').animate({width:'+50'}, 'slow');
+		$('img').animate({height:'+100'}, 'fast');
+		
+		$('img').animate({width:'+500'}, 2000);
+		$('img').animate({height:'+100'}, 'slow');
+		
+		//3. redbird가 상하로 이동하도록..
+		$('img').animate({top:'+500'}, 2000);
+		$('img').animate({top:'+100'}, 'slow');
+		
+		//4. 5초 뒤에 redbird가 사라지도록.. setTimeout(), hide() 
+		// alert 창으로 "앵그리버드 숨었다!""
+		setTimeout(function(){
+			$('img').hide();
+			alert("앵그리버드 숨었다!");
+		}, 6000);
+
+		setTimeout(function(){
+			$('img').show();
+			alert("두두두두두~~ 짠!");
+		}, 10000);
+		
+		//5. 10초 뒤에 앵그리버드가 다시 나타나도록
+		// "두두두두두두~~~ 짠"
+		
+	});
+</script>
+</head>
+<body>
+	<img alt="" src = "./image/redbird.png">
+</body>
+</html>

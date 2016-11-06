@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>live() :: 미래에 존재할 태그에 이벤트를 적용시키는 함수.</title>
+
+<script type="text/javascript" src = "//code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 1. Header 부분을 클릭하면..h1 태그의 갯수를 alert() 창으로 출력.
+	/* 	$('h1').click(function(){
+			var length = $('h1').length;
+			//alert("h1의 갯수 :: " + length);
+			//var text = $(this).text(); //val()은 안됨..
+			var text = $(this).html();
+			//alert(length + "=====" + text);
+			
+			$('div').append('<h1>'+length+'-'+text+'</h1>');
+		}); */
+		
+		//2. live() 함수를 적용.. 1.8.3점 대에서만 적용..
+		// 복잡하기 때문에.. on()을 권장한다..
+		// on() 미래의 태그에 적용하지 말고 / 처음 존재하는 태그에만 적용
+	 	$('h1').live('click', function(){
+			var length = $('h1').length;
+			//alert("h1의 갯수 :: " + length);
+			//var text = $(this).text(); //val()은 안됨..
+			var text = $(this).html();
+			//alert(length + "=====" + text);
+			
+			$('div').append('<h1>'+length+'-'+text+'</h1>');
+		}); 
+	});
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<h1>Header</h1>
+	</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!-- 
+show() / hide()
+fadeIn() / fadeOut()
+slideToggle()
+::
+fadeTo() : 투명도를 조절할 수 있는 함수.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fadeIn(), fadeOut(), slideToggle():: 슬라이딩 효과로 이미지가 나타났다, 사라졌다..</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	.image{position:absolute; top: 30px; left: 30px;}
+</style>
+<script type="text/javascript">
+	$(function() {
+		//1. 이미지들이 처음에는 안보이도록..
+		$('.image').hide();
+		
+		//2. 첫번째 이미지가 샤라라락 보여지도록..
+		//$('.image:first').fadeIn(3000);
+		$('.image:first').show('slow');
+		
+		//3. 보이는 이미지를 클릭할때마다 다음번 이미지가 나오도록..
+		//.image,click()
+		$('.image').click(function(event){	//$(this).next().fadeIn()
+			event.preventDefault();	//a 태그의 가장 기본적인 이벤트를 해제시키는 역할.
+			$(this).next().fadeIn();
+			
+		//4. 마지막 이미지를 클릭하면 다시 처음부터 반복하도록..
+			var next = $(this).next().length;
+			//alert(next); //1,0
+			//alert($('.image:last').next().length);
+
+			var next = $(this).next().length?$(this).next():$('.image:first');
+			 /*$(this).fadeOut(3000);
+			next.fadeIn(3000); */
+			
+			//slideToggle()을 사용하자
+			$(this).slideToggle(3000);
+			next.slideToggle(3000);
+		});//click
+	});
+</script>
+</head>
+<body>
+	<a class = "image" href = "http://jquery.com">
+		<img alt="" src = "./image/1.JPG" width = "300" height = "380">
+	</a>
+	<a class = "image" href = "http://jquery.com">
+		<img alt="" src = "./image/2.JPG" width = "300" height = "380">
+	</a>
+	<a class = "image" href = "http://jquery.com">
+		<img alt="" src = "./image/3.JPG" width = "300" height = "380">
+	</a>
+	<a class = "image" href = "http://jquery.com">
+		<img alt="" src = "./image/4.JPG" width = "300" height = "380">
+	</a>
+	<a class = "image" href = "http://jquery.com">
+		<img alt="" src = "./image/5.JPG" width = "300" height = "380">
+	</a>
+</body>
+</html>

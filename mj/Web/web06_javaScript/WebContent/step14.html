@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function bestMovie() {
+		//alert("best");
+		//alert(document.movieForm.movie);	//[Object..]
+		//alert(document.movieForm.movie[0].value);
+		var ma = document.movieForm.movie;
+		//alert(ma.length);	//5
+		//alert(ma[1].value);
+
+		// 엽기적인 그녀가 선택되었는지의 여부를 알아볼수 있어야 한다.
+		//alert(ma[2].checked);	// false | true
+		/*
+			1. 어떤 영화도 선택하지 않고 버튼을 클릭했다면
+			 "영화 하나는 반드시 선택!" 메세지 띄우고
+			 2. 영화 하나를 선택했다면
+			 ~ 영화를 최고의 영화로 꼽으셨네요. 메세지 띄우고
+			 --flag,for 사용됨.
+		 */
+		var flag = false;
+		
+		for (i = 0; i < ma.length; i++) {
+			if (ma[i].checked) {//선택됬다면
+				alert(ma[i].value + "를 최고의 영화로 꼽으셧네요");
+				flag = true;
+				ma[i].checked = false;
+				break;
+			}
+		}	//for
+		if(flag==false)
+			alert("하나의 영화를 선택해 주세요.");
+	}
+</script>
+</head>
+<body>
+	<b>가장 재미있게 보신 영화를 하나만 선택해 주세요..</b>
+	<p>
+	<form name="movieForm">
+		<input type="radio" name="movie" value="이프온리">이프온리<br> 
+		<input type="radio" name="movie" value="내머리속의 지우개">내머리속의 지우개<br>
+		<input type="radio" name="movie" value="엽기적인 그녀">엽기적인 그녀<br>
+		<input type="radio" name="movie" value="너는내운명">너는내운명<br>
+		<input type="radio" name="movie" value="노트북">노트북<br> 
+		<input type="button" value="Best Movie" onclick="bestMovie()">
+	</form>
+</body>
+</html>

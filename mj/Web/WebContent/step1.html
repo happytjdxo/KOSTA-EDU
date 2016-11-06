@@ -1,0 +1,38 @@
+<!-- 
+html 문서에서 테이블을 작성할때 table을 사용.. body 밑에서 사용하자
+table > tr(table row)
+table > td(table data)
+table > th(table header)
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>talbe, tr, td</title>
+<style type="text/css">
+/*	selector를 지정:
+	table, th, td 태그도 한꺼번에 선택자로 지정.
+*/
+	table,th,td{
+		border: 1px double #000;
+	}
+</style>
+</head>
+<body>
+<table>
+	<tr>
+		<th>주민번호</th><th>이름</th><th>주소</th>
+	</tr>
+	<tr>
+		<td>111-111</td><td>나정이</td><td>신촌</td>
+	</tr>
+	<tr>
+		<td>222-222</td><td>쓰레기</td><td>세브란스</td>
+	</tr>
+	<tr>
+		<td>333-333</td><td>빙그레</td><td>목동</td>
+	</tr>
+</table>
+</body>
+</html>

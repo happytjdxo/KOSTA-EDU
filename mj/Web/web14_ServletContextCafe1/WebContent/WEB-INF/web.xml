@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <listener>
+    <listener-class>listener.DriverListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>ODriver</param-name>
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+  <display-name>web14_ServletContextCafe1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PersonWritingServlet</display-name>
+    <servlet-name>PersonWritingServlet</servlet-name>
+    <servlet-class>servlet.context.PersonWritingServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonWritingServlet</servlet-name>
+    <url-pattern>/PersonWritingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonReadingServlet</display-name>
+    <servlet-name>PersonReadingServlet</servlet-name>
+    <servlet-class>servlet.context.PersonReadingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonReadingServlet</servlet-name>
+    <url-pattern>/PersonReadingServlet</url-pattern>
+  </servlet-mapping>
+</web-app>

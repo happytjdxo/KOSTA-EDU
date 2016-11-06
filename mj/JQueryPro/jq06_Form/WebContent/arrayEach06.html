@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function(){
+ 	   var array = [
+         	        {name:'KOSTA', link:'http://kosta.or.kr'},
+         	        {name:'GOOGLE', link:'http://www.google.co.kr'},
+            	    {name:'JQUERY', link:'http://kosta.or.kr'},
+                	{name:'NAVER', link:'http://jquery.com'}
+                   ];
+		//1. each()를 사용해서 각각의 요소들을 body안에다 append 하세요
+		//	KOSTA
+		var outHTML = "";
+		/* $.each(array, function(index){
+			outHTML += '<a href=" '+array[index].lick+">';
+			outHTML += '<h2>'+array[index].name+'</h2>';
+			outHTML +='</a>';
+		}); */
+
+		$.each(array, function(index, item) {
+			outHTML += '<a href=" '+item.link+'">';
+			outHTML += '<h2>' + item.name + '</h2>';
+			outHTML += '</a>';
+		});
+		$('body').append(outHTML);
+	});
+</script>
+</head>
+<body>
+</body>
+</html>

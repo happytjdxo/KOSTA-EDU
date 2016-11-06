@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>version9에서 처음 나온 기능.. prop()</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 체크하기 버튼을 눌렀을때.. 이벤트
+		$('#checkBtn').click(function(){
+			//checkbox에 prop() 함수를 적용.
+			$('#mailing').prop('checked', true);
+		});
+		
+		//2. 체크해제하기 버튼을 눌렀을때.. 이벤트
+		$('#checkBtn2').click(function(){
+			//checkbox에 prop() 함수를 적용.
+			$('#mailing').prop('checked', false);
+		});
+	});
+</script>
+</head>
+<body>
+메일 확인 :: <input type = "checkbox" id = "mailing">
+<input type = "button" value = "체크하기" id = "checkBtn">
+<input type = "button" value = "체크해제하기" id = "checkBtn2">
+</body>
+</html>

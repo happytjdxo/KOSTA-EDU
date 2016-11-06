@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- step07_1.js 파일을 만들어서 외부로 자바스크립트를 분리 시키세요..
+나이를 입력할때 ::
+1.	나이가 19세 미만이면 - "미성년자 이므로 해당 사이트 입장 불가!!" 메세지 띄우고
+2.	나이가 19세 이상이면 - "성인인증! 해당 사이트 입장!" 메세지 띄우고
+	이때 성인나이트(adult.jsp)로 이동..
+3.	만약에 나이를 입력하지 않으면 - "나이는 반드시 입력해야 합니다" 메세지 띄우고
+4.	나이를 문자로 입력하면 - "나이는 숫자로 입력만 가능합니다" 메세지 띄우고
+5.	모든 경우 (1~4)에 나이를 다시 clear 시키고 커서의 위치를 다시 잡음. 
+-->
+<script type="text/javascript" src="step07_1.js"></script>
+</head>
+<body>
+	<form name="ageForm">
+		나이 : <input type="text" name="age">
+		<input type="button" value="나이확인" onclick="checkAge()">
+		
+	</form>
+</body>
+</html>

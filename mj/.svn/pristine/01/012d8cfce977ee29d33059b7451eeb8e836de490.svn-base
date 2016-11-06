@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 align="center">Radio & CheckBox Form Test..</h2><p>
+<form action="CBS1" method="post">
+기수 : <input type="text" name="kisu"><p>
+남 <input type="radio" name="gender" value="남">
+여 <input type="radio" name="gender" value="여"><p>
+<b>오늘은 한주의 시작인 월요일입니다. 술한잔 해야죠..</b><p>
+<input type="checkbox" name="menu" value="오돌뼈">오돌뼈<br>
+<input type="checkbox" name="menu" value="닭발">닭발<br>
+<input type="checkbox" name="menu" value="닭도리탕">닭도리탕<br>
+<input type="checkbox" name="menu" value="회">회<br>
+<input type="checkbox" name="menu" value="골뱅이소면">골뱅이소면<br>
+<input type="submit" value="전송">
+
+</form>
+</body>
+</html>

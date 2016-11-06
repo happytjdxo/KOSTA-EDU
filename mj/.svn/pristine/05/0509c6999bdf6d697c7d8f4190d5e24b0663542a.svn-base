@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- 
+step1.html에서는 css문서가 html내부에 있었다면
+step2.html에서는 css문서를 별도의 파일로 분리시키고	/	이걸 다시 연결해서 사용
+step3.html에서는 css문서를 별도의 폴더에 분리시키겠다..	WebContent>css>step3.css
+step4.html에서는 css문서를 @import를 이용해서 참조해 보겠다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	@IMPORT url("./css/step3.css");
+</style>
+</head>
+<body>
+<h3>파일 분리시켜 이용하기 :: step4.html</h3>
+<p>@import를 사용
+<p>css를 이용해서 html 통일감 부여하기..
+</body>
+</html>

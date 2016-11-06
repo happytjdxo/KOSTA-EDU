@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+   $(function(){
+      //해보기
+      /*
+         1. hobby를 하나도 선택하지 않으면...alert()창 띄우기
+         2. 하나 이상 선택하면...confirm()창 사용...each() 사용해서 선택한 값을 alert()로 띄우기
+         3. action에 걸러진 페이지에서는 forEach 사용해서 선택된 hobby를 출력
+             이때 아무개님~의 취미는 다음과 같습니다...밑에다 출력되도록
+        */
+        
+        $('input[value=send]').click(function(){
+           var hobby = $('input[name=hobby]:checked')
+           //alert(hobby.length);
+           var text = "";
+           if(hobby.length==0){
+              alert("하나 이상의 취미를 선택해 주세여");
+              return;
+           }else{
+              hobby.each(function(index){
+                 text += $(this).val()+" ";
+              });
+              alert(text);
+              return confirm("선택하신 취미의 갯수는 : "+hobby.length+"개를 전송 하시겠습니까?");
+           }
+        });
+   });
+</script>
+</head>
+<body>
+   <form action="checkboxForm09.jsp" method="get" id="frm">
+   ID : <input type="text" name="id" id="id" required="required"><p>
+   NAME : <input type="text" name="name" id="name" required="required"><p>
+   <b>당신의 취미를 다 고르세여...</b><p>
+   <input type="checkbox" name="hobby" value="Reading">Reading<br>
+   <input type="checkbox" name="hobby" value="Drinking">Drinking<br>
+   <input type="checkbox" name="hobby" value="Driving">Driving<br>
+   <input type="checkbox" name="hobby" value="Swimming">Swimming<br>
+   <input type="checkbox" name="hobby" value="Walking">Walking<br>
+   
+   <input type="submit" value="send">
+   </form>
+</body>
+</html>

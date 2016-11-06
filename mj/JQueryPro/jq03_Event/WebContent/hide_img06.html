@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 숨기기 보이기 :: hide() | show()</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 일단은 이미지를 숨긴다.
+		$('#imageView').hide();
+		$('#mouseIn').css('background','yellow');
+		
+		//2. mouseenter(), mouseleave() 함수를 이용해서 사진이 보였다 / 안보였다.. 효과
+	/* 	$('#mouseIn').mouseenter(function(){
+			//$('#imageView').show(4000);
+			$('#imageView').fadeIn(8000);
+		});
+		$('#mouseIn').mouseleave(function(){
+			//$('#imageView').hide(4000);
+			$('#imageView').fadeOut(7000);
+		}); */
+		
+		//3. hover()를 이용해서 위와 동일한 효과가 나타나도록
+		$('#mouseIn').hover(function(){
+			$('#imageView').fadeIn(4000);
+		}, function() {
+			$('#imageView').fadeOut(4000);
+		});
+	});
+</script>
+</head>
+<body>
+	<span id = "mouseIn">++++++++++++++ 사진보기 (마우스를 올리세요) ++++++++++++++</span>
+	<p><p>
+	<div id = "imageView"><img src= "./image/1.JPG" width = "300" height = "400"></div>
+</body>
+</html>

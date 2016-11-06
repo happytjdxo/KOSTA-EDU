@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>click() 적용하기2 :: 실제 기사 내용에 적용</title>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	*{margin: 0px; padding: 0px;}
+	div{
+		margin: 5px;
+		padding:3px;
+		border: 3px solid black;
+		border-radius: 10px; /* 경게선 모서리를 둥글게 */
+	}
+	
+</style>
+<script type="text/javascript">
+	$(function() {
+		//1.각각의 div 영역을 클릭하면...해당 영역의 제목이 alert 창으로 뜨도록
+		$('div').click(function(){
+			var header=$('h1',this).text();
+			//alert(header);
+		
+		//$('div').click(function(){
+			var content=$('p',this).text();
+			//alert(content);
+			alert(header+"\n ============================="+content);
+		});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<h1>美 8세 소년 권총자살 '충격'..자살 경위 미궁 속</h1>
+		<p>(로스앤젤레스=연합뉴스) 김종우 특파원 = 미국 네바다 주 라스베이거스에 사는 8살 소년이 권총으로 스스로 목숨을
+			끊은 사건이 발생해 충격을 주고 있다. 라스베이거스 외곽 사우스웨스트 밸리에 사는 클레이튼 싱글레튼(8)은 지난달 10일
+			자신의 집에서 권총으로 머리를 쏴 자살했다고 현지 방송인 8라스베이거스 뉴스닷컴이 6일(현지시간) 보도했다.</p>
+	</div>
+	<div>
+		<h1>[국정화 불복종 확산]"건국 쓸 수 없다면 '정부' 용어 빼자" 뉴라이트 주장, 새 교육과정에 수용</h1>
+		<p>역사 국정교과서의 밑그림을 제공하는 새 교육과정 개발 과정에서 뉴라이트 성향 인사들이 기존 교육과정에 있는
+			‘대한민국 정부 수립’이란 표현을 ‘대한민국 수립’으로 고치도록 주도한 것으로 확인됐다. 교육부가 지난 9월23일 고시한
+			‘2015 개정 교육과정’에 포함된 ‘대한민국 수립’이란 표현이 뉴라이트의 ‘건국절’ 주장을 수용했음을 보여주는 것이다.</p>
+	</div>
+	<div>
+		<h1>중국, 관용차 번호판 비리 공안간부에 무기징역 중형</h1>
+		<p>【서울=뉴시스】이재준 기자 = 중국 법원은 교통위반 적발을 피할 수 있는 관용차 번호판과 연관한 비리에 관여한
+			베이징시 공안국 교통관리국 쑹젠궈(宋建國) 전 국장에 대해 무기징역을 선고했다고 관영 매체가 7일 보도했다</p>
+	</div>
+
+</body>
+</html>

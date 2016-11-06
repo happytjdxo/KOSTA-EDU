@@ -1,0 +1,29 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+  <script type="text/javascript">
+     $(function(){
+        $('#jsonBtn').click(function(){
+           $.ajax({
+              type:"post",
+              url:"JSonServlet",
+              dataType:"json",
+              
+              success:function(data){ //data가 json 객체를 받는다. 
+                 //alert("response..");
+                 //alert(data.name+ " "+data.age);
+                 $('#jsonView').html(data.name+" "+data.address).css('background', 'yellow');
+              } //callback
+           }); //ajax
+        }); //click
+     });
+  </script>
+  </head>
+  <body>
+     <input type="button" value="json_object" id="jsonBtn">
+     <span id="jsonView"></span>
+  </body>
+  </html>

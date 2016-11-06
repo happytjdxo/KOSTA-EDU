@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<listener>
+	<listener-class>listener.MyServletListener</listener-class>
+	</listener>
+  <context-param>
+  <param-name>userName1</param-name>
+  <param-value>김유정</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>userName2</param-name>
+  <param-value>설현</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>userName3</param-name>
+  <param-value>아이유</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>userFile</param-name>
+  <param-value>WEB-INF\member.txt</param-value>
+  </context-param>
+  
+  <display-name>web13_ServletContext</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>WritingServlet</display-name>
+    <servlet-name>WritingServlet</servlet-name>
+    <servlet-class>servlet.context.WritingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WritingServlet</servlet-name>
+    <url-pattern>/WS</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadingServlet</display-name>
+    <servlet-name>ReadingServlet</servlet-name>
+    <servlet-class>servlet.context.ReadingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadingServlet</servlet-name>
+    <url-pattern>/RS</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadingServlet2</display-name>
+    <servlet-name>ReadingServlet2</servlet-name>
+    <servlet-class>self.servlet.context.ReadingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadingServlet2</servlet-name>
+    <url-pattern>/RS2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WritingServlet2</display-name>
+    <servlet-name>WritingServlet2</servlet-name>
+    <servlet-class>self.servlet.context.WritingServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WritingServlet2</servlet-name>
+    <url-pattern>/WS2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextParam</display-name>
+    <servlet-name>ServletContextParam</servlet-name>
+    <servlet-class>servlet.context.ServletContextParam</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextParam</servlet-name>
+    <url-pattern>/SCP</url-pattern>
+  </servlet-mapping>
+</web-app>

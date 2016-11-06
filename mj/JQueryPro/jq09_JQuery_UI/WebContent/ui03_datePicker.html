@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/star/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    //1. datePicker 기능을 사용한다..
+    $('#datepicker').datepicker({
+    	//우리식 달력...
+    	dateFormat:"yy-mm-dd",
+    	dayNamesMin:['일','월','화','수','목','금','토'],
+    	monthNames:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+    	showMonthAfterYear:true
+    	
+    });//datepicker
+    //2. 버튼 클릭하면 오늘 날짜가 alert 창으로 뜨도록...
+    $('#dateBtn').click(function(){
+    	alert("Today is "+$('#datepicker').val());
+    });
+  });
+  </script>
+</head>
+Date: <input type="text" id="datepicker">
+<input type="button" value="Date Confirm" id="dateBtn">
+</body>
+</html>

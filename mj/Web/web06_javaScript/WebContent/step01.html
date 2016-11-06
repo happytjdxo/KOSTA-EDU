@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+		1. 자바스크립트는 변수를 선언할 때, 타입을 명시하지 않는다.
+		2. 자바스크립트에서 사용하는 주석은 자바에서 사용하는 주석을 쓴다.
+	*/
+	for(cnt=0; cnt<20; cnt++){
+		document.write(cnt + "Hello JavaScript..<br>");
+	}
+</script>
+</head>
+<body>
+<!-- 
+	3. 자바스크립트 선언부의 위치는 body 안에서도 가능하다. 하지만 대부분 head안에서, 
+	   혹은 타이틀 밑에서 하는 것이 관례.
+	   body 안에서 선언하고 / 오늘은 날씨가 정말 화창한 날입니다.를 출력.
+	   
+	   document ::
+	   ~ document는 html문서 전체라고 봐도 좋고, 실제 html문서에서 읽어들이는 body~body까지라고 봐도 좋다.
+	   우선 document는 window의 하위객체이다. 웹 브라우저에서 html문서를 실제로 읽어서 표시해주는 부분이다.
+	   그래서 body~body까지이다.
+ -->
+	<script type="text/javascript">
+		for(i=0; i<10; i++){
+		 	window.document.write("오늘은 날씨가 정말 화창한 날입니다. <br>");
+		 }
+	</script>
+</body>
+</html>

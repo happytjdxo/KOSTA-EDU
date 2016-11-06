@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+   $(function(){
+      $('#ajaxBtn').click(function(){
+         //ajax 기술 적용됨
+         
+         $.ajax({
+            type:"post",
+            url:"HelloAjaxServlet",
+            data:"name=jqueryAjax"
+         });
+      });
+   });
+</script>
+</head>
+<body>
+   <input type="button" id="ajaxBtn" value="ajaxValue">
+</body>
+</html>

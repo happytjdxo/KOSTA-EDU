@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	body{
+		background-image: url("./img/clock.jpg");
+		background-repeat: no-repeat;
+		/* background-position: 50% 0%; */
+		/* background-position: center top; */
+		/* 	background-position: left center; */
+		background-position: 0% 50%
+	}
+</style>
+</head>
+<body>
+<p>
+<pre>
+배경 이미지가 반복적으로 나타나지 않을때
+하나의 이미지가 나타나는 기본적인 위치는 좌상단이다.(0,0)
+
+background-position 속성으로 배경이미지가 나타나는 위치를
+변경할 수 있다.
+
+위치는 비율 혹은 속성값으로 설정이 가능하다.
+
+좌상단은 [0%, 0%], 오른쪽 하단은? [100%, 100%] 이다.
+
+
+
+배경 이미지가 반복적으로 나타나지 않을때
+하나의 이미지가 나타나는 기본적인 위치는 좌상단이다.(0,0)
+
+background-position 속성으로 배경이미지가 나타나는 위치를
+변경할 수 있다.
+
+위치는 비율 혹은 속성값으로 설정이 가능하다.
+
+좌상단은 [0%, 0%], 오른쪽 하단은? [100%, 100%] 이다.
+
+
+
+배경 이미지가 반복적으로 나타나지 않을때
+하나의 이미지가 나타나는 기본적인 위치는 좌상단이다.(0,0)
+
+background-position 속성으로 배경이미지가 나타나는 위치를
+변경할 수 있다.
+
+위치는 비율 혹은 속성값으로 설정이 가능하다.
+
+좌상단은 [0%, 0%], 오른쪽 하단은? [100%, 100%] 이다.
+</pre>
+</body>
+</html>

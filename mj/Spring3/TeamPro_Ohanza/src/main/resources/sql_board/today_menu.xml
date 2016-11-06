@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TodayMenuBoard">
+	<!-- today_menu
+		오늘의 메뉴는, index에서 추천안주를 눌렀을 때
+		기상청 날씨API를 통해 날씨를 받아온 후, 해당 날씨와 weather컬럼의 날씨와 같을 때
+		그 게시글의 content를 불러오는 형식으로...
+		따로 뷰페이지가 없으므로 테이블은 우리가 직접 넣어야한다.
+		//////
+		관리자페이지를 만들어서 
+	 -->
+	
+	<!-- today_menu에서 사용되는 resultMap -->
+	<resultMap type="today" id="today_menu_All">
+         <result property="no" column="board_no" jdbcType="NUMERIC"/>
+         <result property="title" column="board_title" jdbcType="VARCHAR"/>
+         <result property="writeDate" column="board_writeDate" jdbcType="VARCHAR"/>
+         <result property="newFileName" column="board_newFileName" jdbcType="VARCHAR"/>
+         <result property="content" column="board_content" jdbcType="VARCHAR"/>
+         <result property="weather" column="board_weather" jdbcType="VARCHAR"/>
+         <result property="memberDTO.grade" column="grade" jdbcType="VARCHAR"/>
+      </resultMap>
+	<!-- 오늘의 날짜를 통해 추천메뉴를 window.open 로 간단한 뷰페이지로 연다..
+	이때 나오는 것은 날짜를 통해 받아온 board의 content(메뉴 종류).
+	 -->
+	<!-- 1. today_menu에서의 글 쓰기 -->
+	<insert id="board_writeBoard"  parameterType="today"><!-- Alias를, BoardDTO를 board라고 했을 때. -->
+		<selectKey keyProperty="no" resultType="int" order="BEFORE" ><!-- keyProperty는 today_menuDTO의 prop. -->
+			SELECT today_menu_seq.nextVal FROM dual
+		</selectKey>
+		INSERT INTO today_menu
+		(board_no, board_title, board_content, board_writeDate, board_weather)
+		VALUES
+		(#{no}, #{title}, #{content}, sysdate, #{weather})
+	</insert>
+	
+	<!-- 2. 게시판 글 수정 -->
+	<!-- today_menu에서의 글 수정 -->
+	<update id="board_updateBoard" parameterType="today">
+		UPDATE today_menu
+		SET board_title=#{title}, board_content=#{content}, board_weather=#{weather}
+		WHERE board_no = #{no}
+	</update>
+	
+	<!-- 3. today_menu의 글 삭제 -->
+	<delete id="board_deleteBoard" parameterType="int">
+		DELETE FROM today_menu
+		WHERE board_no=#{no}
+	</delete>
+	
+	
+	<!-- 4. today_menu의, title로 게시글 검색 =====필요없음 -->
+	<!-- <select id="board_searchBy_Title" parameterType="string" resultMap="today_menu_All">
+		SELECT board_no, board_title, board_content, board_hits, board_writeDate, board_newFileName, board_category, m.nickname 
+		FROM today_menu f, member m
+		WHERE board_title LIKE ('%'||#{value}||'%') AND m.ssn = f.ssn
+		JOIN 조건 안주면, member m에서ㅡ, m.nickname 을 모두 가져오기때문에, 게시판 글 x 멤버 수 만큼 출력이된다..
+	</select> -->
+	
+	<!-- 5. today_menu에서, 작성자 명....닉네임으로 게시글 검색 -->
+	<!-- <select id="board_searchBy_Writer" parameterType="string" resultMap="today_menu_All">
+		SELECT board_no, board_title, board_content, board_hits, board_writeDate, board_newFileName, board_category, m.nickname 
+		FROM today_menu f, member m
+		WHERE m.nickname = #{value} AND m.ssn = f.ssn
+		여기서 조인 안주면, 모든 게시글이 출력되고, 닉네임도 해당 닉네임으로 받아온다.. 
+	</select> -->
+	
+	<!-- 6. 내가 쓴 글 검색 ===== 필요없음. -->
+	<!-- <select id="searchMyText" parameterType="member" resultMap="today_menu_All">	
+		SELECT board_no, board_title, board_content, board_hits, board_writeDate, board_newFileName, board_category, m.nickname 
+		FROM today_menu f, member m
+		WHERE f.ssn = m.ssn AND f.ssn=#{ssn}
+		글이 작성되었던 today_menu의 ssn과, 세션에 바인딩 되어있는 member의 ssn이 같을 때, 해당하는 게시판을 가져온다
+	</select> -->
+	
+	
+	<!-- 7. today_menu 카테고리로 찾기. 필요없음.. -->
+	<!-- <select id="searchBy_Category" parameterType="string" resultMap="today_menu_All">	
+		SELECT board_no, board_title, board_content, board_hits, board_writeDate, board_newFileName, board_category, m.nickname 
+		FROM today_menu f, member m
+		WHERE f.ssn = m.ssn AND board_category=#{value}
+		글이 작성되었던 today_menu의 ssn과, 세션에 바인딩 되어있는 member의 ssn이 같을 때, 해당하는 게시판을 가져온다
+	</select> -->
+	
+	<!-- 8. today_menu에서의 목록보기  == 필요없음. -->
+      <!-- <select id="board_getBoardList" resultType="board" resultMap="today_menu_All">
+      SELECT
+      board_no,board_title,board_content,board_hits,board_writeDate,board_newFileName,board_category,board_like,board_hate, m.nickname
+      FROM
+      today_menu f, member m
+      WHERE f.ssn=m.ssn
+      </select> -->
+      
+      <!-- 9. today_menu에서의 글 추천 -->
+      <!-- <update id="board_likeBoard" parameterType="board">
+      UPDATE today_menu
+      SET board_like=board_like+1 
+      WHERE board_no=#{no}
+      </update>
+
+      10. today_menu에서의 글 반대
+      <update id="board_hateBoard" parameterType="board">
+         UPDATE today_menu
+      SET board_hate=board_hate+1 
+      WHERE board_no=#{no}
+      </update>      --> 
+      
+   <!-- 11. 날씨값을 통해서, content를   -->
+      <select id="board_getBoard" parameterType="today" resultMap="today_menu_All">
+      SELECT
+      board_no,board_title,board_content,board_writeDate,board_newFileName, board_weather
+      FROM today_menu
+      WHERE board_weather=#{weather}
+      </select>
+	
+	<select id="board_getBoardList" parameterType="today" resultMap="today_menu_All">
+		SELECT
+		board_no,board_title,board_content,board_writeDate,board_newFileName, board_weather
+		FROM today_menu
+	</select>
+      <!-- 12. today_menu에서의 인기글 선정 ======== 필요없음. -->
+       <!-- <select id="board_bestOfBest" resultMap="today_menu_All">
+         SELECT 
+         board_no,board_title,board_content,board_hits,board_writeDate,board_newFileName
+         ,board_category,board_like,board_hate, ssn
+         FROM
+         (SELECT board_no,board_title,board_content,board_hits,board_writeDate,board_newFileName
+         ,board_category,board_like,board_hate,f.ssn
+         FROM today_menu f, member m
+         WHERE f.ssn = m.ssn
+         ORDER BY board_like DESC)
+         WHERE rownum &lt;= 5 
+         </select> -->
+
+</mapper>	

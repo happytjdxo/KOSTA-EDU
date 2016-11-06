@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	.large{width :200px; border: 2px solid red;}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('img').hover(function(){
+			//mouseenter
+			$(this).addClass('large');
+		}, function(){
+			//mouseleave
+			$(this).removeClass('large');
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>Bigger Image Size..</h2><p>
+	<img alt = "" src ="./image/1.JPG" width = "100"><br>
+	<img alt = "" src ="./image/2.JPG" width = "100"><br>
+	<img alt = "" src ="./image/3.JPG" width = "100"><br>
+</body>
+</html>
+<!-- hover()를 이용해서 사진 영역에 마우스를 갖다 대면 이미지가 2배로 확대 되도록 -->

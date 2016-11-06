@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 폼에 값을 넣고 전송하기 버튼을 누르면 .. action 페이지로 이동
+		// submit()
+		$('#memberForm').submit(function(){
+			//alert("~~~~");
+			var id = $('#userId').val();
+			var name = $('input[name=userName]').val();
+			var address = $(':text[name=userAddress]').val();
+			//alert(id+" "+name+ " "+ address);
+			return confirm(name + "님의 정보를 전송하시겠습니까?");
+		});
+	});
+</script>
+</head>
+<body>
+	<form action = "textForm08.jsp" method="get" id="memberForm">
+		아이디 : <input type = "text" name = "userId" id = "userId"><p>
+		이 름 : <input type = "text" name = "userName" id = "userName"><p>
+		주 소 : <input type = "text" name = "userAddress" id = "userAddress"><p>
+		<input type = "submit" value = "sending">
+	</form>
+</body>
+</html>

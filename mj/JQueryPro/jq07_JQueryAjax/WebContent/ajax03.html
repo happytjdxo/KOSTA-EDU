@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<!-- 
+	일반적인 JQuery 부분
+	1. select 중에서 특정한 option을 선택하지 않으면 "~~~~" 메세지를 alert로 띄움
+	2. select 중에서 특정한 option을 선택하면 그 값을 alert로 띄움
+	::
+	Ajax 부분
+	3. 선수의 이름을 선택하면 AddressServlet 이동.. 요청을 전송(선택한 이름을 전송)
+	4. 선수의 이름에 해당하는 주소는 특정영역에 뿌려지도록..
+	5. 선수에 해당하는 주소는 서블릿에서 로직으로 잘 매핑..
+-->
+<script type="text/javascript">
+	$(function() {
+		$('#name').change(function(){
+			if($(this).val()==""){ //아무것도 선택하지 않았다면..
+				alert("한명의 선수는 선택되어야 합니다..");
+				return;
+			}
+			//alert($(this).val());
+			//ajax 프로그램으로 진입한다..
+			$.ajax({
+				type:"post",
+				url : "AddressServlet",
+				data : "name=" + $(this).val(),
+				////////////////////////////
+				success : function(data) {
+					$('#addressView').html(data);
+				}
+			});// ajax
+		});// change
+	});// function
+</script>
+</head>
+<body>
+	<select id = "name">
+		<option value = "">===== 야구 선수들 =====</option>
+		<option value = "류현진">류현진</option>
+		<option value = "푸이그">푸이그</option>
+		<option value = "추신수">추신수</option>
+		<option value = "박찬호">박찬호</option>
+	</select>
+	<span id = "addressView"></span>
+</body>
+</html>

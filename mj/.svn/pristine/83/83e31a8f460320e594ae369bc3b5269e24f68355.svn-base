@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트를 이용해서 배열의 선언, 생성, 값 할당</title>
+<script type="text/javascript">
+	function testArray() {
+		//1. 배열 객체를 생성..
+		var arr = new Array(3);	//길이
+		//alert(arr.length);	//3
+		
+		//2. 배열안에 값을 할당..
+		arr[0] ="치킨";
+		arr[1] ="피자";
+		arr[2] ="킹크랩";
+		// 지금은 popup창이 세번뜬다.
+		// 한번에 세가지 메뉴가 뜨도록 수정.. 나중에 해보세요
+		for (i = 0; i < arr.length; i++) {
+			alert(arr[i]);
+		}
+
+	}
+</script>
+</head>
+<body>
+<input type="button" value="Array Test" onclick="testArray()">
+</body>
+</html>

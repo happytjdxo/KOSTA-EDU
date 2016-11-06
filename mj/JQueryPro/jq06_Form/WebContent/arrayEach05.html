@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		//1. 버튼을 클릭하면 배열을 선언과 동시에 하나 생성.
+		$('#testBtn').click(function(){
+			var array = [ ];	//배열선언
+			array.push("최민재");
+			array.push("황면우");
+			array.push("한상준");
+			array.push("최용성");
+			
+			//alert(array.length);
+			//alert(array.toString());
+			
+		//2. for 문으로 array안에 있는 내용을 alert()로 출력
+			/* for(var i = 0; i<array.length; i++){
+				alert(array[i]);
+			} */
+		
+		//3. each() 사용해서 alert()로 출력되도록.
+		/* $(array).each(function(index){
+			alert(index+1+"."+array[index]);
+		}); */
+		/* 	$.each(array, function(index){
+				alert(index+1+"."+array[index]);
+			}); */
+			
+		//4. alert() 한번에 다 나오도록.. each()
+		var str = "";
+			$.each(array, function(index){
+				str += index+1+"."+array[index] + "  ";
+			});
+			alert(str);
+			alert($.inArray('김민혁',array)); // 2 , -1
+		});
+	});
+</script>
+</head>
+<body>
+	<input type = "button" id = "testBtn" value = "배열, each()test">
+</body>
+</html>

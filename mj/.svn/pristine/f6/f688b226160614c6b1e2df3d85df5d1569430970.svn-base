@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>setInterval() | setTimeout()</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	.boy{ width: 200px; border: 2px solid green;}
+</style>
+<script type="text/javascript">
+	$(function() {
+		//1. img를 선택자로 지정.. boy클래스를 적용
+		$('img').addClass('boy');
+		
+		//2. setTimeout()을 이용해서 3초 뒤에 맨 첫번째 이미지가 body 태그에 붙도록
+		/* setTimeout(function(){
+			//$('body').append($('img:eq(0)'));
+			$('body').append($('img:first'));
+		}, 3000); */
+		
+		//3. setInterval()을 이용해서 3초마다 계속..반복되도록..
+		/* setInterval(function(){
+			$('body').append($('img:eq(1)'));
+		}, 1000); */
+		
+		setInterval(function(){
+			$('img').first().appendTo('body');
+		}, 1500);
+	});
+</script>
+</head>
+<body>
+	<img alt="" src="./image/3.JPG">
+	<img alt="" src="./image/4.JPG">
+	<img alt="" src="./image/5.JPG">
+</body>
+</html>

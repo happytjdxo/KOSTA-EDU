@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/sunny/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<style>
+  .toggler { width: 500px; height: 200px; position: relative; }
+  #button { padding: .5em 1em; text-decoration: none; }
+  #effect {position: relative;  width: 240px;  padding: 1em; letter-spacing: 0; font-size: 1.2em; border: 1px solid #000; background: #eee; color: #333; }
+  .newClass { text-indent: 40px; letter-spacing: .4em; width: 410px; height: 100px; padding: 30px; margin: 10px; font-size: 1.6em; }
+  </style>
+<script type="text/javascript">
+	$(function(){
+		$('#button').click(function(){
+			$('#effect').toggleClass('newClass',1000);
+		});
+	});
+</script>
+</head>
+<body>
+<div class="toggler">
+  <div id="effect" class="newClass ui-corner-all">
+      조금 더 가면
+      눈이 오리
+      먼 산에 기댄
+      그대 마음에
+      눈은 오리
+      산은 그려지리
+  </div>
+</div>
+<button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javaScript에서의 변수 선언법 :: 타입을 명시하지 않는다.</title>
+ <script type="text/javascript">
+		var count = 5; // 변수를 선언할 때, var를 명시해서 변수임을 알린다.
+		var name = "민재";
+		
+		for(i=0; i<5; i++){
+			window.document.write(name + "야 <br>");
+		}
+		//alert("민재야 졸지마라.");
+		window.alert(name + "야 졸지마라.");
+	</script>
+	
+</head>
+<body>
+</body>
+</html>

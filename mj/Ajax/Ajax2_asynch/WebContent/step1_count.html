@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr;
+	
+	function startRequest() { //요청을 수행하는 기능.
+		xhr = new XMLHttpRequest();
+		//readyState 속성의 상태값은 0~4까지의 값을 가질 수 있다
+		//alert(xhr.readyState); //아무것도안됨
+		xhr.onreadystatechange = callback;
+		xhr.open("get", "GetCountServlet?id=ajax&&pass=104");
+		//alert(xhr.readyState); // 1 전송할 방식과 전송할 경로가 지정
+		xhr.send(null);
+			
+	}
+	function callback() {
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				var text=xhr.responseText;
+				//alert(text);
+				document.getElementById("resultScope").innerHTML = text;
+			}
+			
+		}
+		
+	}
+
+</script>
+
+</head>
+<body>
+<h2 align="center">Get 방식으로 Count 증가시키기</h2><p>
+<input type="button" value="Show Count" onclick="startRequest()"><p>
+<span id="resultScope"></span>
+
+</body>
+</html>
+
+
+
+
+
+

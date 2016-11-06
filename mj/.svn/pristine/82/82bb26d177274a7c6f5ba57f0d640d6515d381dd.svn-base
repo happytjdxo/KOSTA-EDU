@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<properties resource="conf/jdbc.properties"/> 
+	<typeAliases>
+		<typeAlias type="org.kosta.ohanza.model.BoardDTO" alias="board"/>
+		<typeAlias type="org.kosta.ohanza.model.MemberDTO" alias="member"/>
+		<typeAlias type="org.kosta.ohanza.model.ReplyDTO" alias="reply"/>
+	</typeAliases>
+
+<environments default="development">
+	<environment id="development">
+		<transactionManager type="JDBC"/>
+		<dataSource type="UNPOOLED">
+			<property name="driver" value="${JDBC.Driver}"/>
+			<property name="url" value="${JDBC.ConnectionURL}"/>
+			<property name="username" value="${JDBC.Username}"/>
+			<property name="password" value="${JDBC.Password}"/>
+		</dataSource>
+	</environment>
+</environments>
+<mappers>
+	<mapper resource="sqlmapper/boardMapper.xml"/>
+</mappers>
+</configuration>

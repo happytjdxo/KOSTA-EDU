@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자열 연습..</title>
+<script type="text/javascript">
+	var str="우유빛깔 박정기";
+	alert(str+ ":: 문자열의 길이는 "+str.length);		//str.length <-- 이거해서 문자열 길이 8나옴.
+	
+	var str2="우유빛깔 박정기";
+ 	alert(str==str2);	// true
+ 	
+ 	//subString()을 이용해서 빛깔만 출력되도록. str써서
+ 	alert(str.substring(2, 4));
+ 	
+ 	alert(str2.indexOf('우'));	//0
+</script>
+</head>
+<body>
+
+</body>
+</html>

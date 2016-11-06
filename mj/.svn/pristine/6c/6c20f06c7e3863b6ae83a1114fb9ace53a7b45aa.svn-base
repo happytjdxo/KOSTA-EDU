@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//회원가입 버튼을 클릭하면..폼의 모든 값을 가지고 전송..
+		$('#regBtn').click(function(){
+			$.ajax({
+				type : "post",
+				url : "SerializeServlet",
+				data : $('#regForm').serialize(),
+				
+				success:function(data){
+					$('#regView').html(data).css({
+						'background':'red',
+						'font-weight':'bold',
+						'color':'yellow'
+					});//css
+				} //success
+			}); //ajax
+		}); //click
+		
+		/*
+			id가 4~8자 사이의 값만 허용..
+			이 안의 값이 아니면(미만,초과) 메세지 띄운다.. 이때 글자색은 red로!
+			
+			id가 4~8 사이의 값이면.. ajax 적용 SerializeServlet 전송되도록.
+			post, serialize()적용
+			해당 아이디가 있으면 idCheckView영역에 id 불가를 뿌리고 (red)
+			해당 아이디가 없으면 idCheckView영역에 id 가능을 뿌리고 (blue)
+		 */
+		$('#id').keyup(function(){
+			var id = $(this).val();
+			if(id.length<4 || id.length>8){
+				//alert("id는 4~8 사이의 값만 허용합니다..");
+				$('#idCheckView').html("id는 4~8사이의 값만 허용합니다..").css('color','red');
+				return;
+			}else{// 4~8자 사이의 값이 들어올때는..
+				// ajax 적용
+				$.ajax({
+					type : "post",
+					url:"SerializeServlet",
+					data:$('#idForm').serialize(),
+					
+					success:function(data){
+						if(data=="true")
+							$('#idCheckView').html(id+ ":: 사용불가!!").css('color', 'red');
+						else
+							$('#idCheckView').html(id+ ":: 사용가능!!").css('color', 'blue');
+					} //callback
+				}); // ajax
+			}
+		}); //keyup
+	}); //
+</script>
+</head>
+<body>
+	<form action = "SerializeServlet" id = "regForm">
+	<h2>Register Form..Test..</h2><p>
+		NAME : <input type = "text" name = "name"><p>
+		ADDR : <input type = "text" name = "addr"><p>
+		<input type = "hidden" name = "command" value = "register"><p>
+		<input type = "button" value = "회원가입" id = "regBtn">
+	</form>
+	<hr>
+	<div id = "regView"></div>
+	
+	<hr>
+	<form action = "SerializeServlet" id = "idForm">
+	<h2>Member ID Check Form..Test..</h2><p>
+		ID : <input type = "text" name = "id" id = "id"><p>
+		<span id = "idCheckView"></span>
+		<input type = "hidden" name = "command" value = "idcheck">
+	</form>
+</body>
+</html>

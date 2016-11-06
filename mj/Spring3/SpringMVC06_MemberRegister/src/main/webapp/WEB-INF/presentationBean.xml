@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- HandlerMapping, ViewResolver :: 이번 경우는 생략해도 되. -->
+	
+	<!-- methodNameResolver :: 해당 value를 method 이름과 매핑시켜주는 클래스 -->
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="command"></property>
+	</bean>
+	<!-- User Defintion Beans :: Controller :: MemberController -->
+	<bean name="/member.do" class="controller.MemberController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="memberService" ref="memberService"/>
+	</bean>
+</beans>

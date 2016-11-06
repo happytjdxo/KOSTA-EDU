@@ -1,0 +1,31 @@
+<<<<<<<<<<<<<< JQuery를 이용한 Ajax 기술 사용 Template >>>>>>>>>>>>>>>>>>>>>>
+
+<html>
+<head><title>
+<script>
+	<$(function(){
+		$('#btn').click(function(){
+			//ajax 기술이 사용됨..
+			$.ajax({ // 비동기 통신
+				type: "get/post"(http 메소드 요청방식), 
+				url: "HelloServlet"(서버로 전송되는 주소),
+				data: "id = ajax"(요청시 전달되는 값),	//map방식으로 들어감(key, value)
+				// 위 3개가 비동기 통신에 연결방법이다.
+				
+				dataType(응답시 전달되는 값의 타입),
+				
+				////////////////////////////////////////////////////////////////
+				
+				success: function(data){
+					$('#showView').html(data);
+				}// callback 부분.
+			});// ajax
+		});// click
+	});
+</script>
+</title></head>
+<body>
+	<input type = "button" id = "btn">
+	<div id = "showView"></div>
+</body>
+</html>

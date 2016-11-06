@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>web12_ServletConfig</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ServletConfig1</display-name>
+    <servlet-name>ServletConfig1</servlet-name>
+    <servlet-class>servlet.config.ServletConfig1</servlet-class>
+    <init-param>
+      <param-name>name</param-name>
+      <param-value>MJ</param-value>
+    </init-param>
+    <init-param>
+      <param-name>addr</param-name>
+      <param-value>판교</param-value>
+    </init-param>
+    <init-param>
+      <param-name>email</param-name>
+      <param-value>MJ@naver.com</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConfig1</servlet-name>
+    <url-pattern>/SC1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EnglishGreetServlet2</servlet-name>
+    <servlet-class>servlet.config.InternationalGreetServlet2</servlet-class>
+    <init-param>
+      <param-name>greeting</param-name>
+      <param-value>Welcome to the Olymphic............
+   	 			  Today is Schdule.................
+   	 			  Have a Good Time.............
+   	 </param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnglishGreetServlet2</servlet-name>
+    <url-pattern>/EnGreet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FrenchGreetServlet2</servlet-name>
+    <servlet-class>servlet.config.InternationalGreetServlet2</servlet-class>
+    <init-param>
+      <param-name>greeting</param-name>
+      <param-value>Bongour Mouchu............
+   	 			  Bongour Madam.................
+   	 			  Bongour Mouchu hhh.............
+   	 </param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrenchGreetServlet2</servlet-name>
+    <url-pattern>/FrGreet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>KoreaGreetServlet2</servlet-name>
+    <servlet-class>servlet.config.InternationalGreetServlet2</servlet-class>
+    <init-param>
+      <param-name>greeting</param-name>
+      <param-value>안녕하세요............
+   	 			  반갑습니다.................
+   	 			  오늘 날씨는 어떻나요?.............
+   	 </param-value>
+    </init-param>
+    <load-on-startup>4</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KoreaGreetServlet2</servlet-name>
+    <url-pattern>/KrGreet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsingConfigCountStore3</display-name>
+    <servlet-name>UsingConfigCountStore3</servlet-name>
+    <servlet-class>servlet.config.UsingConfigCountStore3</servlet-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>c:\\data\\countLog.txt</param-value>
+    </init-param>
+    <load-on-startup>5</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsingConfigCountStore3</servlet-name>
+    <url-pattern>/UsingConfig3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>countLog 파일에 증가된 카운트를 저장</description>
+    <display-name>UsingConfigCountStore4</display-name>
+    <servlet-name>UsingConfigCountStore4</servlet-name>
+    <servlet-class>servlet.config.UsingConfigCountStore4</servlet-class>
+    <init-param>
+      <description>파일의 경로와 파일 이름</description>
+      <param-name>path</param-name>
+      <param-value>c:\\data\\countLog.txt</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsingConfigCountStore4</servlet-name>
+    <url-pattern>/UsingConfig4</url-pattern>
+  </servlet-mapping>
+</web-app>

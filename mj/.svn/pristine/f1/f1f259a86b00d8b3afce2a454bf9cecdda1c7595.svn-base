@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TipBoard">
+	
+	<!-- alcohol_tip_board에서 사용되는 resultMap -->
+	<resultMap type="board" id="alcohol_tip_board_All">
+         <result property="no" column="tip_no" jdbcType="NUMERIC"/>
+         <result property="title" column="tip_title" jdbcType="VARCHAR"/>
+         <result property="hits" column="tip_hits" jdbcType="NUMERIC"/>
+         <result property="writeDate" column="tip_writeDate" jdbcType="VARCHAR"/>
+         <result property="newFileName" column="tip_newFileName" jdbcType="VARCHAR"/>
+         <result property="category" column="tip_category" jdbcType="VARCHAR"/>
+         <result property="like" column="tip_like" jdbcType="NUMERIC"/>
+         <result property="hate" column="tip_hate" jdbcType="NUMERIC"/>
+         <result property="memberDTO.nickname" column="nickname" jdbcType="VARCHAR"/>
+         <result property="content" column="tip_content" jdbcType="VARCHAR"/>
+      </resultMap>
+
+	<!-- 1. alcohol_tip_board에서의 글 쓰기 -->
+	<insert id="tip_writeBoard"  parameterType="board"><!-- Alias를, BoardDTO를 board라고 했을 때. -->
+		<selectKey keyProperty="no" resultType="int" order="BEFORE" ><!-- keyProperty는 alcohol_tip_boardDTO의 prop. -->
+			SELECT alcohol_tip_board_seq.nextVal FROM dual
+		</selectKey>
+		INSERT INTO alcohol_tip_board
+		(tip_no, tip_title, tip_content, tip_writeDate, tip_originalFileName, 
+		tip_newFileName,tip_category, ssn)
+		VALUES
+		(#{no}, #{title}, #{content}, sysdate, #{originalFileName}, 
+		#{newFileName}, #{category}, #{memberDTO.ssn} )
+	</insert>
+	
+	<!-- 2. 게시판 글 수정 -->
+	<!-- alcohol_tip_board에서의 글 수정 -->
+	<update id="tip_updateBoard" parameterType="board">
+		UPDATE alcohol_tip_board
+		SET tip_title=#{title}, tip_content=#{content}, tip_originalFileName=#{originalFileName}, 
+		tip_newFileName=#{newFileName}, tip_category=#{category}
+		WHERE tip_no = #{no}
+	</update>
+	
+	<!-- 3. alcohol_tip_board의 글 삭제 -->
+	<delete id="tip_deleteBoard" parameterType="int">
+		DELETE FROM alcohol_tip_board
+		WHERE tip_no=#{no}
+	</delete>
+	
+	
+	<!-- 4. alcohol_tip_board의, title로 게시글 검색 -->
+	<select id="tip_searchBy_Title" parameterType="string" resultMap="alcohol_tip_board_All">
+		SELECT tip_no, tip_title, tip_content, tip_hits, tip_writeDate, tip_newFileName, tip_category, m.nickname 
+		FROM alcohol_tip_board f, member m
+		WHERE tip_title LIKE ('%'||#{value}||'%') AND m.ssn = f.ssn
+		<!-- JOIN 조건 안주면, member m에서ㅡ, m.nickname 을 모두 가져오기때문에, 게시판 글 x 멤버 수 만큼 출력이된다.. -->
+	</select>
+	
+	<!-- 5. alcohol_tip_board에서, 작성자 명....닉네임으로 게시글 검색 -->
+	<select id="tip_searchBy_Writer" parameterType="string" resultMap="alcohol_tip_board_All">
+		SELECT tip_no, tip_title, tip_content, tip_hits, tip_writeDate, tip_newFileName, tip_category, m.nickname 
+		FROM alcohol_tip_board f, member m
+		WHERE m.nickname = #{value} AND m.ssn = f.ssn
+		<!-- 여기서 조인 안주면, 모든 게시글이 출력되고, 닉네임도 해당 닉네임으로 받아온다..  -->
+	</select>
+	
+	<!-- 6. 내가 쓴 글 검색 -->
+	<select id="searchMyText" parameterType="member" resultMap="alcohol_tip_board_All">	
+		SELECT tip_no, tip_title, tip_content, tip_hits, tip_writeDate, tip_newFileName, tip_category, m.nickname 
+		FROM alcohol_tip_board f, member m
+		WHERE f.ssn = m.ssn AND f.ssn=#{ssn}
+		<!-- 글이 작성되었던 alcohol_tip_board의 ssn과, 세션에 바인딩 되어있는 member의 ssn이 같을 때, 해당하는 게시판을 가져온다-->
+	</select>
+	
+	
+	<!-- 7. alcohol_tip_board 카테고리로 찾기. -->
+	<select id="searchBy_Category" parameterType="string" resultMap="alcohol_tip_board_All">	
+		SELECT tip_no, tip_title, tip_content, tip_hits, tip_writeDate, tip_newFileName, tip_category, m.nickname 
+		FROM alcohol_tip_board f, member m
+		WHERE f.ssn = m.ssn AND tip_category=#{value}
+		<!-- 글이 작성되었던 alcohol_tip_board의 ssn과, 세션에 바인딩 되어있는 member의 ssn이 같을 때, 해당하는 게시판을 가져온다-->
+	</select>
+	
+	<!-- 8. alcohol_tip_board에서의 목록보기 -->
+      <select id="tip_getBoardList" resultType="board" resultMap="alcohol_tip_board_All">
+      SELECT
+      tip_no,tip_title,tip_content,tip_hits,tip_writeDate,tip_newFileName,tip_category,tip_like,tip_hate, m.nickname
+      FROM
+      alcohol_tip_board f, member m
+      WHERE f.ssn=m.ssn
+      </select>
+      
+      <!-- 9. alcohol_tip_board에서의 글 추천 -->
+      <update id="tip_likeBoard" parameterType="board">
+      UPDATE alcohol_tip_board
+      SET tip_like=tip_like+1 
+      WHERE tip_no=#{no}
+      </update>
+
+      <!-- 10. alcohol_tip_board에서의 글 반대 -->
+      <update id="tip_hateBoard" parameterType="board">
+         UPDATE alcohol_tip_board
+      SET tip_hate=tip_hate+1 
+      WHERE tip_no=#{no}
+      </update>      
+      
+   <!-- 11. alcohol_tip_board에서의 no값으로 게시물 상세보기  -->
+      <select id="tip_getBoard" parameterType="board" resultMap="alcohol_tip_board_All">
+      SELECT
+      tip_no,tip_title,tip_content,tip_hits,tip_writeDate,tip_newFileName,tip_category,tip_like,tip_hate, m.nickname
+      FROM
+      alcohol_tip_board f, member m
+      WHERE f.ssn=m.ssn AND tip_no=#{no}
+      </select>
+
+      <!-- 12. alcohol_tip_board에서의 인기글 선정 -->
+       <select id="tip_bestOfBest" resultMap="alcohol_tip_board_All">
+         SELECT 
+         tip_no,tip_title,tip_content,tip_hits,tip_writeDate,tip_newFileName
+         ,tip_category,tip_like,tip_hate, ssn
+         FROM
+         (SELECT tip_no,tip_title,tip_content,tip_hits,tip_writeDate,tip_newFileName
+         ,tip_category,tip_like,tip_hate,f.ssn
+         FROM alcohol_tip_board f, member m
+         WHERE f.ssn = m.ssn
+         ORDER BY tip_like DESC)
+         WHERE rownum &lt;= 5 
+         </select>
+
+</mapper>	

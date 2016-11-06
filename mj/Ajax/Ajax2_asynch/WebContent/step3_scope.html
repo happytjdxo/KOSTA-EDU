@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var flag = true;	
+	function toggleTest() {
+		if(flag){
+			
+		document.getElementById("divResult").innerHTML = 
+			"<font color=red size=7>방가방가 div Tag!!</font>";
+		
+		document.getElementById("spanResult").innerHTML = 
+			"<font color=blue size=7>방가방가 span Tag!!</font>";
+			flag=false;
+		}else{
+			document.getElementById("divResult").innerHTML = "";
+			document.getElementById("spanResult").innerHTML = "";
+			flag=true;
+		}
+	}
+</script>
+</head>
+<body>
+<h2 align="center">DIV, SPAN 영역의 차이점 :: toggle 효과</h2><p>
+<input type="button" value="Toggle Btn" onclick="toggleTest()"><p>
+<div id="divResult">PADDAM</div>PADDAM
+<HR>
+<span id="spanResult">EDIYA</span>EDIYA
+
+</body>
+</html>

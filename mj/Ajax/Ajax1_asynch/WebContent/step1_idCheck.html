@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		var xhr;
+		var id;
+	
+		function startRequest(){
+			xhr = new XMLHttpRequest();
+			id = document.idCheck.userID;
+			/* alert(xhr); */
+			xhr.onreadystatechange = callback; // 속성이었는데 메서드로 나온다. 왜 메서드 뒤에 ()가 다 빠져있을까?
+											   // 이건 원칙이다. callback은 응답할 때, 호출이 된다.
+											   // 그런데 지금은 등록만 하고 있기 때문에 ()를 빼주는 것이다.
+											   // 정말로 서버에서 xhr 객체가 응답될 때는 ()를 붙인다.
+			
+			/* xhr.open("post", url, async, username, password); //get 방식이므로 아래와 같이 만들어서 보낸다. */
+			xhr.open("post", "IdCheckServlet", "true");
+			// When using Post method, this part should be added.
+			xhr.setRequestHeader("Content-Type", 
+					"application/x-www-form-urlencoded;charset=utf-8");
+			
+			xhr.send("id="+id.value); // post방식이기 때문에 send할 때 맵방식으로 내용이 들어간다.
+		}
+		
+		function callback() {
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					/* alert(xhr.responseText); */
+					var flagText = xhr.responseText.trim();
+					/* if(flagText){
+						var e = document.getElementById("userID");
+						e.innerHTML = flagText;
+					}  */
+					if(flagText == "true"){
+						alert(id.value + "는 이미 사용중입니다.");
+						id.value="";
+						id.focus();
+					}else{
+						window.open("findId.jsp?id="+id.value, "", "width=300, height=400");
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2 align="center">Ajax를 이용한 아이디 중복 확인</h2>
+	<form name="idCheck">
+		아이디 : <input type="text" name="userID" required="required">
+		<input type="button" value="check Dupl" onclick="startRequest()"><br>
+		패스워드 : <input type="password" name="userPass" required="required">
+	</form>
+</body>
+</html>

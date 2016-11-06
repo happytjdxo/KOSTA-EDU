@@ -1,0 +1,15 @@
+=============================== static 한 멤버들이 갖는 성질에 대해서 ===============================
+
+1. static한 성질로 지정된 멤버는 객체 생성 과정이 필요없다.
+2. 객체가 생성되기 이전에 static한 성질의 멤버는 이미 메모리에 올라가 있다.
+	---> 클래스 파일이 로딩될때 메모리(class Area / Heap 영역이 아니다.)에 올라간다.
+	     (실행단계에서 가장 처음에 진행되는 단계)
+3. 이러한 static 멤버를 사용할때 Class이름.static 멤버;
+   예) Math.random();
+       Integer.parseInt();
+       System.out
+       Byte.MAX_VALUE;
+4. static 영역(블럭)안에서는 this 사용 못한다.
+5. static은 static 끼리 통한다.
+6. static 변수의 값은 생성된 모든 객체들이 공유한다!!!
+	---> Field(Member V) / Local(지역) V / Class(전역) V

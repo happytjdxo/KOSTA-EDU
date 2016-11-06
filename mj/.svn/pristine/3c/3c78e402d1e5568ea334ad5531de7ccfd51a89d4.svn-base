@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#ajaxBtn2').click(function(){
+			$.ajax({
+				
+			type:"get",
+			url:"HelloAjax2",
+			data:"userId=ajax2",
+			
+			////////////////////
+				success:function(data){
+					alert(data);
+					//$('#showView').html(data);
+				},
+				
+				error:function(){
+					alert("응답 시간이 1초를 넘어섰습니다.. Error!!");
+				},
+				timeout:1000
+			});	//ajax
+		});	//click
+	});	//function
+</script>
+</head>
+<body>
+	<input type = "button" id = "ajaxBtn2" value = "ajaxValue2">
+	<div id = "showView"></div>
+</body>
+</html>

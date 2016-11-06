@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event 함수 :: bind(), html() 사용하기</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. h2 태그를 선택하면 이벤트가 발생하도록 로직을 작성..bind()
+		/* $('h2').bind('click',function(){
+			$(this).html(function(index, html){
+				return html + '★';
+			});
+		}); */
+		
+		//2. h2를 클리하면 동시에 진행되도록..별, 하트, 스페이스 문양으로 진행
+		$('h2').html(function(index,html){
+			switch(index){
+			case 0: return html +'초l민재、★';
+			case 1: return html +'㈜민재™';
+			case 2: return html +'모범생최민재';
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>오늘 밤에는 비가 온답니다.</h2>
+	<h2>우산들 가지고 오셨나요??</h2>
+	<h2>그러면 술 한잔 하시고 비 좀 맞으세요..</h2>
+	
+</body>
+</html>

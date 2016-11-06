@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		   //1.
+		     $('#addOptionBtn').one('click', function(){
+	         	var arr = ["구유림","최란","폴리","이집트","은지","혜진","은화","지연","온유"];
+	         
+	         //2. each()를 사용해서 select 밑에 append() 하는데..option 태그에
+	         $.each(arr,function(index,item){
+	            var option = "<option value="+item+">"+item+"</option>";
+	            $('#friend').append(option);
+	         });
+	      }); // click
+
+		//3. 생성된 폼을 제거
+		$('#deleteOptionBtn').click(function(){
+			$('#friend>option').remove();
+		});
+	});
+</script>
+</head>
+<body>
+	<input type = "button" value ="옵션 생성" id = "addOptionBtn">
+	<input type = "button" value ="옵션 삭제" id = "deleteOptionBtn">
+	<select id = "friend"></select>
+</body>
+</html>
+
+

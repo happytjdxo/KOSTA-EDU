@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+1. table의 경계선을 지정.. 실선, 2px, 그린색
+2. 글씨를 중앙정렬
+3. 테이블을 옆으로 나란히 정렬.. float
+4. 여백을 상하좌우 30px 로 지정.. margin
+-->
+<style type="text/css">
+ 	table{
+ 		border: solid 2px green;
+ 		text-align: center;
+ 		float : left;
+ 		margin: 30px;
+ 	}
+ 
+ 	table td{
+ 		border: 1px solid purple;
+ 		padding: 30px;
+ 	}
+ 	
+ 	table.rara02{
+ 		border-spacing: 30px;
+ 		background-image: url("./img/dot_bg.jpg");
+ 	}
+ 	
+ 	table.rara01{
+ 		background-color: yellow;
+ 	}
+</style>
+</head>
+<body>
+<h2 align="center">Margin과 Padding의 차이점</h2><p>
+<table class="rara01">
+	<tr>
+		<td>클라라 시구 장면 1.</td>
+		<td><img src="img/rara.jpg"></td>
+	</tr>
+</table>
+
+<table class="rara02">
+	<tr>
+		<td>클라라 시구 장면 2.</td>
+		<td><img src="img/rara.jpg"></td>
+	</tr>
+</table>
+</body>
+</html>

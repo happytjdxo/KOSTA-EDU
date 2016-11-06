@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>checkbox에 선택된 값을 javascript에서 다루기</title>
+<script type="text/javascript">
+	function choiceAngel() {
+		var ca = document.checkForm.angel;
+		//alert(ca.length);
+
+		/*
+			1.	for사용해서 선택된 값들을 alert창으로 출력
+				radio,checkbox는 선택된 값을 checked로 판단한다.
+		 */
+		/* for(i=0; i<ca.length; i++){
+			if(ca[i].checked){
+				alert("당신의 이상형은 " +ca[i].value +"입니다.");
+			}
+		} */
+
+		/*
+			2.	하나의 팝업창에 선택한 이상형이 다 뜨도록..
+				만약에 선택하지 않고 버튼을 클릭하면 "한명 이상 선택!!" 메세지 띄우고
+		 */
+		var data = "";
+		for (i = 0; i < ca.length; i++) {
+			if (ca[i].checked) {
+				data += ca[i].value + " ";
+				ca[i].checked = false;
+			}
+		}
+		if (data == "") {
+			alert("한명 이상의 이상형을 선택하세요");
+		} else {
+			alert("당신의 이상형은.." + data);
+		}
+	}
+</script>
+</head>
+<body>
+	<b>여러분의 이상형을 선택하세요.(여러명 선택가능)</b>
+	<p>
+	<form name="checkForm">
+		<input type="checkbox" name="angel" value="김유정">김유정<br> <input
+			type="checkbox" name="angel" value="설현">설현<br> <input
+			type="checkbox" name="angel" value="손예진">손예진<br> <input
+			type="checkbox" name="angel" value="전도연">전도연<br> <input
+			type="checkbox" name="angel" value="한예진">한예진<br> <input
+			type="button" value="이상형 선택" onclick="choiceAngel()">
+	</form>
+</body>
+</html>

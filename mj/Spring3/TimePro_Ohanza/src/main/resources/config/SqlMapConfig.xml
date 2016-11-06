@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	<!-- 단위 테스트시 추가  -->
+	<properties resource="config/jdbc.properties"/>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="member" type="org.kosta.ohanza.model.MemberDTO"/>
+		<typeAlias alias="board" type="org.kosta.ohanza.model.BoardDTO"/>
+		<typeAlias alias="reply" type="org.kosta.ohanza.model.ReplyDTO"/>
+		<typeAlias alias="today" type="org.kosta.ohanza.model.TodayMenuDTO"/> 
+	</typeAliases>
+	
+	
+	<!-- 단위 테스트시 추가.. -->
+		<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${JDBC.Driver}"/>
+				<property name="url" value="${JDBC.ConnectionURL}"/>
+				<property name="username" value="${JDBC.Username}"/>
+				<property name="password" value="${JDBC.Password}"/>
+			</dataSource>
+		</environment>		
+	</environments>
+	<mappers>
+		<mapper resource="sql_member/member.xml"/>
+		<mapper resource="sql_board/alcohol_type_board.xml"/>
+		<!--<mapper resource="sql_board/alcohol_house_board.xml"/>
+		<mapper resource="sql_board/alcohol_tip_board.xml"/>
+		<mapper resource="sql_board/freeboard.xml"/>
+		<mapper resource="sql_board/hit_alcohol.xml"/>
+		<mapper resource="sql_board/hot_content.xml"/>
+		<mapper resource="sql_board/today_menu.xml"/>
+ 		<mapper resource="sql_reply/alcohol_type_reply.xml"/>
+ 		<mapper resource="sql_reply/alcohol_house_reply.xml"/>
+ 		<mapper resource="sql_reply/alcohol_tip_reply.xml"/>
+ 		<mapper resource="sql_reply/freeboard_reply.xml"/> -->
+	</mappers>
+</configuration>
+

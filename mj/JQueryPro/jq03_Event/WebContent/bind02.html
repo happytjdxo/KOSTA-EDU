@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	.reverse{background:blue; color: white;}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('h2').bind({
+			//마우스가 특정 영역안으로 들어왔을때.. 발생	
+			mouseenter:function(){
+				$(this).addClass('reverse');
+			},
+			//마우스가 특정 영역밖으로 나갔을때.. 발생	
+			mouseleave:function(){
+				$(this).removeClass('reverse');
+			}
+		});//bind()
+		
+		//2. bind01.html에서 했던 h2 태그를 클릭하면 별이 찍히도록..bind(), html()
+	/* 	$('h2').bind('click',function(){
+			$(this).html(function(index, html) {
+				return html + '★';
+			});
+		}); */
+		$('h2').click(function(){
+			$(this).html(function(index,html){
+				return html + '★';
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>오늘 밤에는 비가 온답니다.</h2>
+	<h2>우산들 가지고 오셨나요??</h2>
+	<h2>그러면 술 한잔 하시고 비 좀 맞으세요..</h2>
+</body>
+</html>

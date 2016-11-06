@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>pre 태그</title>
+</head>
+<body>
+입력한 대로 자유롭게 보이게 하는 태그가 바로 &lt;pre&gt; 태그이다.<br>
+일반적으로 html에선 space bar / Enter 키를 인식 못한다.
+이 문장은 윗 문장에서 아랫문장으로 보여지지 않고 윗 문장과 계속 연결된 문장으로 보일것이다.
+확인!!
+<pre>
+html 문서에 입력된 내용이 그대로 출력 
+될수 있게
+할수 있는 태그이다..
+공백         도 여러번..     입력        될까요?
+<b>찐하게</b>
+</pre>
+</body>
+</html>

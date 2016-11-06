@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript를 이용해서 form안의 값을 다루어보기.</title>
+	<script type="text/javascript">
+		function showData(){
+			var name = window.document.LoginForm.nick.value; // form 안에 입력된 값.
+			// 만약에 value까지 잡아주었을 때, focus를 nick이라는 곳에 가져다두려면?
+			// document.LoginForm.nick.focus 라고 잡아줘야하는 불편함이 있다.
+			alert(name + " Hello!");
+			document.LoginForm.nick.focus();
+		}
+		function showHobby(){
+			var nf = window.document.LoginForm.nick;
+			var hf = window.document.LoginForm.hobby;
+			// 이렇게 폼까지만 잡아주는 이유는 빈 공간에서도 프로그램이 돌도록 해주기 위해서이다.
+			// 그리고 아래와 같이 사용해주기 위해서...
+			alert(nf.value + "의 취미 :: " + hf.value + "가 취미냐?");
+			nf.value = "";
+			hf.value= "";
+			nf.focus(); // 포커스를 돌리는 메서드
+		}
+	</script>
+</head>
+<body>
+	<form name="LoginForm" id="frm">
+		닉네임 : <input type="text" name="nick">
+		<input type="button" value="click" onclick="showData()"><br><br>
+		취미 : <input type="text" name="hobby">
+		<input type="button" value="click my hobby" onclick="showHobby()"><br><br>
+	</form>
+</body>
+</html>

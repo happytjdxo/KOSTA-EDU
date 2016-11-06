@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:property-placeholder location="classpath:config/jdbc.properties"/>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${JDBC.Driver}"></property>
+		<property name="url" value="${JDBC.ConnectionURL}"></property>
+		<property name="username" value="${JDBC.Username}"></property>
+		<property name="password" value="${JDBC.Password}"></property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml"></property>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+
+	<!-- MemberDAO Bean 설정 -->
+	<bean id="memberDAO" class="org.kosta.ohanza.dao.MemberDAOImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	<bean id="memberService" class="org.kosta.ohanza.service.MemberServiceImpl">
+		<property name="memberDAO" ref="memberDAO"/>
+	</bean>
+	
+	<!-- TodayMenuDAO Bean 설정 -->
+	<bean id="todayMenuDAO" class="org.kosta.ohanza.dao.TodayMenuDAOImpl">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	<bean id="todayMenuService" class="org.kosta.ohanza.service.TodayMenuServiceImpl">
+		<property name="todayMenuDAO" ref="todayMenuDAO"></property>
+	</bean>
+	
+	<!-- tip_BoardDAO Bean설정 -->
+	<bean id="Tip_BoardDAO" class="org.kosta.ohanza.dao.Tip_BoardDAOImpl">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	<bean id="Tip_BoardService" class="org.kosta.ohanza.service.Tip_BoardServiceImpl">
+		<property name="boardDAO" ref="Tip_BoardDAO"></property>
+	</bean>
+	
+	<!-- TypeBoardDAO 설정 -->
+	<bean id="typeBoardDAO" class="org.kosta.ohanza.dao.TypeBoardDAOImpl">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	<bean id="typeBoardService" class="org.kosta.ohanza.service.TypeBoardServiceImpl">
+		<property name="boardDAO" ref="typeBoardDAO"></property>
+	</bean>
+	
+	<!-- 파일 업로드 시 추가. 
+	<bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="maxUploadSize" value="-1"></property>
+	</bean> -->
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="views/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="order" value="1"/>
+	</bean>
+	
+	<!-- <mvc:resources mapping="/resource/**" location="/WEB-INF/view/" /> -->
+	<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property>
+	</bean>
+	<!-- <bean name="downloadView" class="util.DownloadView"/> -->
+	
+	<!-- JsonView -->
+	<bean name="JsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"></bean>
+	
+	<!-- 5. 컨트롤러 설정부분 :: methodNameResolver, MemberController -->
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="command"></property>
+	</bean>
+	
+	<bean name="/board.do" class="org.kosta.ohanza.controller.BoardController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="typeBoardService" ref="typeBoardService"></property>
+	</bean>	
+	
+	<bean name="/member.do" class="org.kosta.ohanza.controller.MemberController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="memberService" ref="memberService"></property>
+		
+	</bean>	
+	<!-- 
+	<bean name="/today.do" class="org.kosta.ohanza.controller.TodayMenuController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="todayMenuService" ref="todayMenuService"></property>
+	</bean>	
+ -->
+</beans>
+
+
+
+
+
+

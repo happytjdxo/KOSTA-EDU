@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>confirm창 + location.href</title>
+<script type="text/javascript">
+	function girlsHome() {
+		if(confirm("소녀시대 홈페이지로 이동하시겠습니까?"))
+			//이동.. 자바스크립트에서 바로 이동.
+			location.href = "http://girlsgeneration.smtown.com";
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="소녀시대 홈페이지 가기" onclick="girlsHome()">
+</body>
+</html>

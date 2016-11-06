@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//1. 폼에 입력된 모든 값을 가지고 ACTION에 페이지로 전송하는 기능..
+		$('#frm').submit(function(event){
+			//alert("submit..");
+			
+		//2. id, name값을 각각의 변수에 할당.. id, name 값을 alert() 창으로 출력
+		// id, name 폼을 clear 시키고 포커스는 다시 id에 맞춰 놓는다..
+			var id = $('#id').val();
+			var name = $('#name').val();
+			alert(id + " " + name);
+			$('#id').val("").focus();
+			$('#name').val("");
+			//event.preventDefault();
+			
+		//3. checkbox에 하나의 취미도 선택하지 않았다면 alert창 띄우고 
+		//선택했다면 each() 사용해서 alert 창으로(하나의 창) 취미를 띄우고..
+		$('# ')
+		//4. select 폼에서 선택한 값도 alert로 띄우고
+		
+		//5. div 영역에 hp에서는 선택한 것이 red로 뿌려지도록
+		
+		//6. multiForm12.jsp 는 jstl로 결과 페이지에 출력 되도록.. 연결.
+		
+		});//submit()
+	});
+</script>
+</head>
+<body>
+	<form action="multiForm12.jsp" method="post" id="frm">
+		ID : <input type="text" name="id" id="id"><p>
+		NAME : <input type "text" name="name" id="name"><p><p>
+			<b>당신의 취미를 다 고르세여...</b><p>
+			<input type="checkbox" name="hobby" value="Reading">Reading<br>
+			<input type="checkbox" name="hobby" value="Drinking">Drinking<br>
+			<input type="checkbox" name="hobby" value="Driving">Driving<br>
+			<input type="checkbox" name="hobby" value="Swimming">Swimming<br>
+			<input type="checkbox" name="hobby" value="Walking">Walking<br>
+		<p>
+			<input type="submit" value="send">
+			<div id = "showHP"></div>
+	</form>
+</body>
+</html>

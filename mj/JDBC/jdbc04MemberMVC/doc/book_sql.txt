@@ -1,0 +1,55 @@
+CREATE TABLE book(
+		isbn varchar2(50) primary key,
+		title varchar2(50) not null,
+		author varchar2(30) not null,
+		publisher varchar2(50) not null,
+		price number not null);
+INSERT INTO book VALUES('1A1','강아지똥','권정생','길벗',12000);
+INSERT INTO book VALUES('2B2','몰입','니비타','동아',34000);
+INSERT INTO book VALUES('3C3','내려놓음','데이비드','동아',37000);
+INSERT INTO book VALUES('4D4','생의의지','니체','길벗',27000);
+INSERT INTO book VALUES('5E5','스프링','나가타','한빛',33000);
+COMMIT;
+
+================== sql 연습 ==================
+
+-- book 테이블에 저장된 책의 수 : count()
+
+SELECT COUNT(*) FROM book;
+SELECT COUNT(-1) FROM book; // 맨 마지막껏만 읽음.(정확도가 높다)
+SELECT COUNT(-1) AS "book's Count" FROM book; (count(-1)에 대한 별칭)
+SELECT COUNT(-1) "book's Count" FROM book; (count(-1)에 대한 별칭)
+
+- 책갯수 라고 별칭을 바꾸세요.
+
+
+-- book 테이블에 있는 모든 책들의 평균가를 구하세요 : average()
+
+SELECT AVG(price) FROM book;
+SELECT ROUND (AVG(price)) FROM book; (반올림)
+
+
+-- book 테이블에서 출판사의 종류를 출력 -- (중복안되게 : DISTINCT)
+SELECT publisher FROM book;
+SELECT DISTINCT(publisher) AS "출판사" FROM book; (중복제거)
+
+
+ -- book 테이블에서 가격이 25000보다 이상 / 35000미만인
+   책의 제목과 저자, 가격이 출력.
+ SELECT title, author, price FROM book WHERE price>= 25000 AND price<35000;
+
+ 
+ -- 모든 책의 가격을 1000원 인하된 가격으로 출력
+ UPDATE book SET price=price-1000;
+
+
+ -- 가격이 낮은것 --> 높은것 순으로 .. 오름차순으로 정렬
+ SELECT title, author, price FROM book ORDER BY price ASC;( ASC = 오름차순)
+ SELECT title, author, price FROM book ORDER BY price; (기본이 오름차순이다.)
+ SELECT title, author, price FROM book ORDER BY price DESC; ( DESE = 내림차순)
+
+ -- book테이블에 있는 모든 책들을 10% 할인가 적용.
+    이때 할인가에 대한 Alias(*)를 "할인률"로 주고
+    title, publisher, price를 함께 출력되도록 한다.
+ SELECT title,publisher,price,price*0.9 "할인가" FROM book;
+ SELECT title,publisher,price,price*(1-(10/100)) "할인가" FROM book;

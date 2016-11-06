@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TypeReply">
+	<resultMap type="reply" id="replyMap">
+   		<result property="reply_no" column="type_reply_no" jdbcType="NUMERIC"/>
+   		<result property="board_no" column="board_no" jdbcType="NUMERIC"/>
+   		<result property="memberDTO.ssn" column="ssn" jdbcType="VARCHAR"/>
+   		<result property="memberDTO.nickname" column="nickname" jdbcType="VARCHAR"/>
+   		<result property="content" column="type_content" jdbcType="VARCHAR"/>
+   		<result property="replyDate" column="type_replyDate" jdbcType="VARCHAR"/>
+   		<result property="like" column="type_like" jdbcType="NUMERIC"/>
+   		<result property="hate" column="type_hate" jdbcType="NUMERIC"/>
+	</resultMap>
+	
+	<!-- 덧글 쓰기 -->
+	<insert id="writeComment" parameterType="reply">
+		<selectKey keyProperty="reply_no" resultType="int" order="BEFORE" >
+			SELECT alcohol_type_reply_seq.nextVal FROM dual
+		</selectKey>
+		INSERT INTO alcohol_type_reply
+		(type_reply_no, board_no, ssn, type_content, type_replyDate, type_like, type_hate)
+		VALUES (#{reply_no}, #{board_no}, #{memberDTO.ssn}, #{content}, sysdate, #{like}, #{hate})
+	</insert>
+	
+	<!-- 덧글 수정 -->
+	<update id="updateComment" parameterType="reply">
+		UPDATE alcohol_type_reply
+		SET type_content=#{content}, type_replyDate=sysdate
+		WHERE board_no=#{board_no} AND type_reply_no=#{reply_no}
+	</update>
+	
+	<!-- 덧글 삭제 -->
+	<delete id="deleteComment" parameterType="reply">
+		DELETE FROM alcohol_type_reply
+		WHERE type_reply_no=#{reply_no} AND board_no=#{board_no}
+	</delete>
+	
+	<!-- 덧글 보기 -->
+	<select id="getReplyList" parameterType="int" resultMap="replyMap">
+		SELECT
+		type_reply_no, board_no, t.ssn, type_content, type_replyDate, type_like, type_hate, m.nickname
+		FROM alcohol_type_reply t, member m
+		WHERE t.ssn = m.ssn AND board_no=#{value}
+	</select>
+	
+	<!-- 덧글 추천 -->
+	<update id="likeComment" parameterType="reply">
+		UPDATE alcohol_type_reply
+		SET type_like=type_like+1
+		WHERE board_no=#{board_no} AND type_reply_no=#{reply_no}
+	</update>
+	
+	<!-- 덧글 반대 -->
+	<update id="hateComment" parameterType="reply">
+		UPDATE alcohol_type_reply
+		SET type_hate=type_hate+1
+		WHERE board_no=#{board_no} AND type_reply_no=#{reply_no}
+	</update>
+</mapper>

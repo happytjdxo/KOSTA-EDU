@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr
+	function startRequest() {
+		var uid = document.frm.userId;
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = callback;
+				
+		
+		//uid=escape(encodeURIComponent(uid.value)); //escape는 생략가능
+		uid=encodeURIComponent(uid.value);
+		
+		
+		
+		xhr.open("get", "EncodingServlet?id=" + uid, true);
+		xhr.send(null);
+	}
+	function callback() {
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				//alert("response....");
+				document.getElementById("resultScope").innerHTML 
+				= "<font color='blue' size=5>"+ xhr.responseText + "</font>";
+				
+				document.frm.userId.value="";
+				document.frm.userId.focus();
+				
+			}else{ //readyState가 2,3일 경우
+				
+				document.getElementById("resultScope").innerHTML
+				= "<img src='./img/a.gif'>";
+			}
+		}
+		
+	}
+</script>
+</head>
+<body>
+<h2 align="center">Get방식에서 자바스크립트에서 한글 처리</h2><p>
+<form name="frm">
+아이디 : <input type="text" name="userId">
+<input type="button" value="아이디보내기" onclick="startRequest()">
+<div id="resultScope">
+
+</div>
+
+</form>
+</body>
+</html>

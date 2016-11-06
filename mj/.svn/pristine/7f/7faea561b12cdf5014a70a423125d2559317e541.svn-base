@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hover(), find() </title>
+
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<style type="text/css">
+	table{ border: 3px solid magenta; width: 550px}
+	tr, td, td{border: 1px dotted blue; font-size: 1.2em; }
+	/* 나중에 hover 효과를 나타내기 위해서..class 속성을 하나 지정. */
+	.hover{ background: #00f; color: #fff; }
+</style>
+<script type="text/javascript">
+	$(function() {
+		//1. 내용이 들어있는 부분을 마우스가 진입할때, 빠져나갈때 hover()를 사용
+		$('tbody tr').hover(function(){
+			//$(this).addClass('hover');
+			//현재 이벤트가 적용되는 tr 태그 중에서 td태그를 찾아서 .. addClass
+			$(this).find('td').addClass('hover');
+		}, function(){
+			//$(this).removeClass('hover');
+			$(this).find('td').removeClass('hover');
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>이름</th><th>직업</th><th>주소</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>장발장</td><td>탈옥</td><td>프랑스</td>
+			</tr>
+			<tr>
+				<td>추신수</td><td>야구선수</td><td>미국</td>
+			</tr>
+			<tr>
+				<td>손석희</td><td>앵커</td><td>한국</td>
+			</tr>
+			<tr>
+				<td>간디</td><td>무직</td><td>인도</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

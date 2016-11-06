@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 align="center"><b>Finding Member..By Id</b></h2><p>
+<form action="FMS" method="get" name="fimdForm">
+ID : <input type="text" name="id" required="required">
+<input type="submit" value="Search ID">
+<img alt="고아라" src="./img/go.jpg" width="20%" height="30%" align = "top">
+
+
+</form>
+</body>
+</html>

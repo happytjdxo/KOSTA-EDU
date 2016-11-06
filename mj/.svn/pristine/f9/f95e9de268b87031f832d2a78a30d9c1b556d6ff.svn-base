@@ -1,0 +1,63 @@
+<비동기 통신>
+
+1. 서버와 비동기통신으로 요청하면 서버가 응답할때까지 클라이언트는 지루하게
+   기다릴 필요가 없다.
+
+2. 사용자는 통신이 이뤄지는 동안 다른 일을 할 수 있다.
+
+3. 페이지 전체가 reloadable 되는 것이 아니라 변경될 부분만 수정된다.
+
+4. 브라우저는 요청에 대한 응답을 빨리 받을 수 있다.
+   (항상 그런건 아닌데.. 응답속도는 어떤 내용을 응답하느냐에 따라 달라지는데..
+    만약에 응답 내용이 시간이 많이 걸리는 것이라면 당연히 응답하는데 시간이 더 
+    소요될 것이다.)
+
+
+
+<Ajax 통신의 소스코드 Template>
+:: 
+Ajax 통신은 부라우저와 서버 사이를 XMLHttpRequest 객체가 왔다 갔다 하면서
+요청의 내용을 서버에 전달하고
+서버가 수행한 결과값을 받아서 (responseText)
+다시 클라이언트의 부분을 수정하는데 사용한다.
+결론적으로 Ajax 비동기 통신을 하기 위해서는 JavaScript의 요청객체를 사용해야만 한다.
+
+<title>
+<script>
+	var xhr;
+	var id = document.frm.id;
+	function startRequest() {	// 이부분은 요청시 일어나는 부분
+	  // 1. 요청 객체를 생성
+	  xhr = new XMLHttpRequest();
+	  
+	  // 2. 요청객체를 서버의 어떤 객체로 전달할지를 지정.
+	  xhr.open("get","IdCheckServlet?id=" + id.valun, true);
+
+	  // 3. 실제로 보내짐.. 이때 실제 url로 전송이 이뤄진다.
+	  xhr.send(null);
+
+	  // 4. 요청 객체가 서버로 다시 되돌아올때 응답하는 기능의 
+	  메소드를 지정해놔야 한다.
+	  xhr.onreadystatechange = callbacke
+	}
+
+	function callback() {	//응답시 기능
+		if(xhr.readyState == 4) {	// xhr 객체가 서버에서 브라우저에 도착.
+		  if(xhr.status == 200) {	// 응답이 정상적으로 완료.. 에러가 없다면..
+		    var text = xhr.responseText;
+		    alert(text);
+		  }
+		}
+	}
+</script>
+</title>
+<body>
+<form name = "frm">
+<input thpe = "text" name = "id" >
+<input type = "button" value = "중복확인" onclick = "startRequest()">
+
+
+//
+XMLHttpRequest();
+ajax기술에서 송수신을 담당하는 JavaScript 내장객체로서 브라우저는 화면 뒤에서
+요청객체를 생성하고 서버로 전달한다.
